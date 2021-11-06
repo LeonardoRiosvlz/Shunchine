@@ -1,0 +1,5 @@
+{
+  "FfmpgTemplateWithIdDoesNotExist": "FfmpgTemplate con id: '%id%' no existe",
+  "FfmpgTemplateNameUsed": "FfmpgTemplate con nombre: '%name%' ya se encuentra registrada",
+  "FfmpgTemplateFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

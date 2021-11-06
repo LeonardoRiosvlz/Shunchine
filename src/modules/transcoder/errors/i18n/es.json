@@ -1,0 +1,11 @@
+{
+  "TranscoderWithIdDoesNotExist": "Transcoder con id: '%id%' no existe",
+  "TranscoderNameUsed": "Transcoder con nombre: '%name%' ya se encuentra registrada",
+  "TranscoderFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%",
+  "TranscoderMediaNoFound": "No se encontró el archivo de video para transcodificar",
+  "TranscodeInitError": "Error al antes de iniciar la transcidificación. Puede que el estado de la tarea no corresponda a un fichero sin transcodificar ",
+  "TranscodeError": "Ocurrió un error al intentar transcodificar el video: %error%",
+  "MediaInfoError": "Error al extraer la información desde: %mediaPath%",
+  "NoFfmpgOptionsError": "No se especificaron las opciones FFmpg, o no existe ninguna registrada"
+
+}

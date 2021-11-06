@@ -1,0 +1,5 @@
+{
+  "FfmpgOptionWithIdDoesNotExist": "FfmpgOption with id: '%id%' does not exists",
+  "FfmpgOptionNameUsed": "FfmpgOption with name: '%name%' already exists",
+  "FfmpgOptionFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}
