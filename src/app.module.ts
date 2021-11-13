@@ -14,6 +14,7 @@ import { CorporationEinModule } from './modules/corporation-ein/corporation-ein.
 import { IrpRoadTaxesModule } from './modules/irp-road-taxes/irp-road-taxes.module';
 import { IftaFuelTaxesModule } from './modules/ifta-fuel-taxes/ifta-fuel-taxes.module';
 import { DotInfoModule } from './modules/dot-info/dot-info.module';
+import { SubstanceComplianceClearinghouseModule } from './modules/substance-compliance-clearinghouse/substance-compliance-clearinghouse.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { DotInfoModule } from './modules/dot-info/dot-info.module';
     CorporationEinModule,
     IrpRoadTaxesModule,
     IftaFuelTaxesModule,
+    SubstanceComplianceClearinghouseModule,
     DotInfoModule,
     FixturesModule,
 

@@ -6,9 +6,12 @@ import { SubstanceComplianceClearinghouseEntity } from '../../../entities/substa
 @ObjectType()
 export class SubstanceComplianceClearinghouseFilter implements IEntityFilter<SubstanceComplianceClearinghouseEntity>{
   @FilterableField(()=>String, { nullable: true }) id?: string;
-  @FilterableField(()=>String, { nullable: true }) name?: string;
-  @FilterableField(()=>String, { nullable: true}) description?: string;
-
+  @FilterableField(()=>String, { nullable: true }) drugRandomEnrollment?: string;
+  @FilterableField(()=>String, { nullable: true}) reasonableSuspicious?: string;
+  @FilterableField(()=>String, { nullable: true }) clearingHouseLogin?: string;
+  @FilterableField(()=>String, { nullable: true}) clearingHousePassword?: string;
+  @FilterableField(()=>String, { nullable: true }) clearingHouseRegQueries?: string;
+  @FilterableField(()=>String, { nullable: true}) otherSubstanceRequest?: string;
   @FilterableField(()=>Date ,{ nullable: true }) createdAt?: Date;
   @FilterableField(()=>Date ,{ nullable: true }) updatedAt?: Date;
 
