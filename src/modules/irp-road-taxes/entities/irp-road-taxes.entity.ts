@@ -30,6 +30,7 @@ export class IrpRoadTaxesEntity extends PersistentEntity {
   @Prop() otherIrpRequest?: string;
   @Prop() otherIrpRequestDetail?: string;
   @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) otherIrpRequestFile?: string;
+  @Prop() notes?: string;
 }
 
 export const IrpRoadTaxesSchema = SchemaFactory.createForClass(IrpRoadTaxesEntity);

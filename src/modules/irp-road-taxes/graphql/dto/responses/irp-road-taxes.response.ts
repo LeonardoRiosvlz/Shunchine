@@ -26,6 +26,7 @@ export class IrpRoadTaxesResponse{
   @Field(() => String, {nullable: true})  otherIrpRequest?: string;
   @Field(() => String, {nullable: true} )  otherIrpRequestDetail?: string;
   @Field(() => CloudFileResponse, { nullable: true }) otherIrpRequestFile?: CloudFileResponse;
+  @Field(() => String, {nullable: true})  notes?: string;
   @Field({nullable: true}) createdAt?: Date;
   @Field({nullable: true}) updatedAt?: Date;
 }

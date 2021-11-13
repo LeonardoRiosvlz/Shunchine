@@ -26,4 +26,5 @@ export class CreateIrpRoadTaxesInput {
   @Field(() => String, {nullable: true})  otherIrpRequest?: string;
   @Field(() => String, {nullable: true} )  otherIrpRequestDetail?: string;
   @Field(() => ID, { nullable: true }) otherIrpRequestFile?: string;
+  @Field(() => String, {nullable: true})  notes?: string;
 }
