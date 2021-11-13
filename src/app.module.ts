@@ -19,6 +19,7 @@ import { DriverFilesModule } from './modules/driver-files/driver-files.module';
 import { AnnualVehInspStateRermitsModule } from './modules/annual-veh-insp-state-rermits/annual-veh-insp-state-rermits.module';
 import { TrailerRentalModule } from './modules/trailer-rental/trailer-rental.module';
 import { YardRentalModule } from './modules/yard-rental/yard-rental.module';
+import { FinancedEquipmentModule } from './modules/financed-equipment/financed-equipment.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { YardRentalModule } from './modules/yard-rental/yard-rental.module';
     AnnualVehInspStateRermitsModule,
     TrailerRentalModule,
     YardRentalModule,
+    FinancedEquipmentModule,
     FixturesModule,
 
   ],

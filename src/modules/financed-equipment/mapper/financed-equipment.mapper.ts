@@ -27,6 +27,9 @@ export class FinancedEquipmentMapper implements BaseMapper<FinancedEquipmentEnti
   persistent2Dto(persistentEntity: FinancedEquipmentEntity): FinancedEquipmentResponse {
     return {
       ...persistentEntity,
+      financeAgreementDocuments: persistentEntity?.financeAgreementDocuments ? { id: persistentEntity.financeAgreementDocuments } : undefined,
+      repairsCostReceiptsFile: persistentEntity?.repairsCostReceiptsFile ? { id: persistentEntity.repairsCostReceiptsFile } : undefined,
+      payOffList: persistentEntity?.payOffList ? { id: persistentEntity.payOffList } : undefined,
     };
   }
 
