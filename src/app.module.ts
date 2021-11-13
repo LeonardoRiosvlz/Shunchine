@@ -20,6 +20,7 @@ import { AnnualVehInspStateRermitsModule } from './modules/annual-veh-insp-state
 import { TrailerRentalModule } from './modules/trailer-rental/trailer-rental.module';
 import { YardRentalModule } from './modules/yard-rental/yard-rental.module';
 import { FinancedEquipmentModule } from './modules/financed-equipment/financed-equipment.module';
+import { AccountingModule } from './modules/accounting/accounting.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { FinancedEquipmentModule } from './modules/financed-equipment/financed-e
     TrailerRentalModule,
     YardRentalModule,
     FinancedEquipmentModule,
+    AccountingModule,
     FixturesModule,
 
   ],

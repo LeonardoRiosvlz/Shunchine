@@ -27,6 +27,7 @@ export class AccountingMapper implements BaseMapper<AccountingEntity> {
   persistent2Dto(persistentEntity: AccountingEntity): AccountingResponse {
     return {
       ...persistentEntity,
+      file: persistentEntity?.file ? { id: persistentEntity.file } : undefined,
     };
   }
 

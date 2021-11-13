@@ -1,7 +1,9 @@
-import { Field, InputType, ID } from '@nestjs/graphql';
+import { Field, InputType, ID, Float } from '@nestjs/graphql';
 
 @InputType()
 export class CreateAccountingInput {
-  @Field(() => String, )  name: string;
-  @Field(() => String, {nullable: true} )  description?: string;
+  @Field(() => Date, )  date: Date;
+  @Field(() => Float, )  paymentAmount: number;
+  @Field(() => String, )  achDate: string;
+  @Field(() => ID, { nullable: true }) file?: string;
 }
