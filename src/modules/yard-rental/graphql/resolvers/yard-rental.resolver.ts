@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Parent,ResolveField } from '@nestjs/graphql';
 
 
 import { GraphQLVoid } from 'graphql-scalars';
@@ -32,6 +32,13 @@ import { APP_MODULES } from 'src/shared/resources/modules.enum';
 import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { YardRentalEntity } from '../../entities/yard-rental.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
+
+
+
+
+import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
+import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
+import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
 
 
 @Resolver(() => YardRentalResponse)
@@ -131,6 +138,28 @@ export class YardRentalResolver extends BaseResolver {
       items: items.map(this._yardRentalMapper.persistent2Dto),
     };
   }
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async file(@Parent() parent?: YardRentalResponse): Promise<CloudFileResponse> {
+    if (parent?.file) {
+      const fileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.file.id },
+        },
+      }));
+      if (fileOrErr.isFailure) {
+        return null;
+      }
+      const file = fileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
 
 
 }

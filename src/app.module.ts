@@ -18,6 +18,7 @@ import { SubstanceComplianceClearinghouseModule } from './modules/substance-comp
 import { DriverFilesModule } from './modules/driver-files/driver-files.module';
 import { AnnualVehInspStateRermitsModule } from './modules/annual-veh-insp-state-rermits/annual-veh-insp-state-rermits.module';
 import { TrailerRentalModule } from './modules/trailer-rental/trailer-rental.module';
+import { YardRentalModule } from './modules/yard-rental/yard-rental.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { TrailerRentalModule } from './modules/trailer-rental/trailer-rental.mod
     DotInfoModule,
     AnnualVehInspStateRermitsModule,
     TrailerRentalModule,
+    YardRentalModule,
     FixturesModule,
 
   ],
