@@ -15,6 +15,7 @@ import { IrpRoadTaxesModule } from './modules/irp-road-taxes/irp-road-taxes.modu
 import { IftaFuelTaxesModule } from './modules/ifta-fuel-taxes/ifta-fuel-taxes.module';
 import { DotInfoModule } from './modules/dot-info/dot-info.module';
 import { SubstanceComplianceClearinghouseModule } from './modules/substance-compliance-clearinghouse/substance-compliance-clearinghouse.module';
+import { DriverFilesModule } from './modules/driver-files/driver-files.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { SubstanceComplianceClearinghouseModule } from './modules/substance-comp
     IrpRoadTaxesModule,
     IftaFuelTaxesModule,
     SubstanceComplianceClearinghouseModule,
+    DriverFilesModule,
     DotInfoModule,
     FixturesModule,
 

@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Parent, ResolveField } from '@nestjs/graphql';
 
 
 import { GraphQLVoid } from 'graphql-scalars';
@@ -32,6 +32,11 @@ import { APP_MODULES } from 'src/shared/resources/modules.enum';
 import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { DriverFilesEntity } from '../../entities/driver-files.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
+
+
+import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
+import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
+import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
 
 
 @Resolver(() => DriverFilesResponse)
@@ -131,6 +136,253 @@ export class DriverFilesResolver extends BaseResolver {
       items: items.map(this._driverFilesMapper.persistent2Dto),
     };
   }
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async driveLicenseFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.driveLicenseFile) {
+      const driveLicenseFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.driveLicenseFile.id },
+        },
+      }));
+      if (driveLicenseFileOrErr.isFailure) {
+        return null;
+      }
+      const file = driveLicenseFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async medicalCardFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.medicalCardFile) {
+      const medicalCardFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.medicalCardFile.id },
+        },
+      }));
+      if (medicalCardFileOrErr.isFailure) {
+        return null;
+      }
+      const file = medicalCardFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async mvrFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.mvrFile) {
+      const mvrFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.mvrFile.id },
+        },
+      }));
+      if (mvrFileOrErr.isFailure) {
+        return null;
+      }
+      const file = mvrFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async socialSecurityFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.mvrFile) {
+      const socialSecurityFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.socialSecurityFile.id },
+        },
+      }));
+      if (socialSecurityFileOrErr.isFailure) {
+        return null;
+      }
+      const file = socialSecurityFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async driverFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.driverFile) {
+      const driverFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.driverFile.id },
+        },
+      }));
+      if (driverFileOrErr.isFailure) {
+        return null;
+      }
+      const file = driverFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async driverSignedContractFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.driverSignedContractFile) {
+      const driverSignedContractFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.driverSignedContractFile.id },
+        },
+      }));
+      if (driverSignedContractFileOrErr.isFailure) {
+        return null;
+      }
+      const file = driverSignedContractFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async inquiryToPreviousEmployerFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.inquiryToPreviousEmployerFile) {
+      const inquiryToPreviousEmployerFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.inquiryToPreviousEmployerFile.id },
+        },
+      }));
+      if (inquiryToPreviousEmployerFileOrErr.isFailure) {
+        return null;
+      }
+      const file = inquiryToPreviousEmployerFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async drugsTestFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.drugsTestFile) {
+      const drugsTestFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.drugsTestFile.id },
+        },
+      }));
+      if (drugsTestFileOrErr.isFailure) {
+        return null;
+      }
+      const file = drugsTestFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async clearingHouseFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.clearingHouseFile) {
+      const clearingHouseFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.clearingHouseFile.id },
+        },
+      }));
+      if (clearingHouseFileOrErr.isFailure) {
+        return null;
+      }
+      const file = clearingHouseFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async readInspectionsNoaFile(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.readInspectionsNoaFile) {
+      const readInspectionsNoaFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.readInspectionsNoaFile.id },
+        },
+      }));
+      if (readInspectionsNoaFileOrErr.isFailure) {
+        return null;
+      }
+      const file = readInspectionsNoaFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async otherDocuments(@Parent() parent?: DriverFilesResponse): Promise<CloudFileResponse> {
+    if (parent?.otherDocuments) {
+      const otherDocumentsOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.readInspectionsNoaFile.id },
+        },
+      }));
+      if (otherDocumentsOrErr.isFailure) {
+        return null;
+      }
+      const file = otherDocumentsOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
 
 
 }
