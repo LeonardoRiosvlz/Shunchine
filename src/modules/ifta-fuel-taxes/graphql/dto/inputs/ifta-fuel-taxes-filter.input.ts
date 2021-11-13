@@ -6,9 +6,9 @@ import { IftaFuelTaxesEntity } from '../../../entities/ifta-fuel-taxes.entity';
 @ObjectType()
 export class IftaFuelTaxesFilter implements IEntityFilter<IftaFuelTaxesEntity>{
   @FilterableField(()=>String, { nullable: true }) id?: string;
-  @FilterableField(()=>String, { nullable: true }) name?: string;
-  @FilterableField(()=>String, { nullable: true}) description?: string;
-
+  @FilterableField(()=>String, { nullable: true }) irpAiftaAccountccount?: string;
+  @FilterableField(()=>String, { nullable: true}) iftaApplRenewalsChanges?: string;
+  @FilterableField(()=>String, { nullable: true }) otherIftaRequest?: string;
   @FilterableField(()=>Date ,{ nullable: true }) createdAt?: Date;
   @FilterableField(()=>Date ,{ nullable: true }) updatedAt?: Date;
 

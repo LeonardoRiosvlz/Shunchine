@@ -27,6 +27,10 @@ export class IftaFuelTaxesMapper implements BaseMapper<IftaFuelTaxesEntity> {
   persistent2Dto(persistentEntity: IftaFuelTaxesEntity): IftaFuelTaxesResponse {
     return {
       ...persistentEntity,
+      iftaAccountFile: persistentEntity?.iftaAccountFile ? { id: persistentEntity.iftaAccountFile } : undefined,
+      iftaApplRenewalsChangesFile: persistentEntity?.iftaApplRenewalsChangesFile ? { id: persistentEntity.iftaApplRenewalsChangesFile } : undefined,
+      fuelTaxesFile: persistentEntity?.fuelTaxesFile ? { id: persistentEntity.fuelTaxesFile } : undefined,
+      otherIftaRequestFile: persistentEntity?.otherIftaRequestFile ? { id: persistentEntity.otherIftaRequestFile } : undefined,
     };
   }
 

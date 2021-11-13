@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Parent , ResolveField } from '@nestjs/graphql';
 
 
 import { GraphQLVoid } from 'graphql-scalars';
@@ -33,6 +33,9 @@ import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { IftaFuelTaxesEntity } from '../../entities/ifta-fuel-taxes.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
 
+import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
+import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
+import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
 
 @Resolver(() => IftaFuelTaxesResponse)
 export class IftaFuelTaxesResolver extends BaseResolver {
@@ -131,6 +134,94 @@ export class IftaFuelTaxesResolver extends BaseResolver {
       items: items.map(this._iftaFuelTaxesMapper.persistent2Dto),
     };
   }
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async iftaAccountFile(@Parent() parent?: IftaFuelTaxesResponse): Promise<CloudFileResponse> {
+    if (parent?.iftaAccountFile) {
+      const iftaAccountFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.iftaAccountFile.id },
+        },
+      }));
+      if (iftaAccountFileOrErr.isFailure) {
+        return null;
+      }
+      const file = iftaAccountFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async iftaApplRenewalsChangesFile(@Parent() parent?: IftaFuelTaxesResponse): Promise<CloudFileResponse> {
+    if (parent?.iftaApplRenewalsChangesFile) {
+      const iftaApplRenewalsChangesFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.iftaApplRenewalsChangesFile.id },
+        },
+      }));
+      if (iftaApplRenewalsChangesFileOrErr.isFailure) {
+        return null;
+      }
+      const file = iftaApplRenewalsChangesFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async fuelTaxesFile(@Parent() parent?: IftaFuelTaxesResponse): Promise<CloudFileResponse> {
+    if (parent?.fuelTaxesFile) {
+      const fuelTaxesFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.fuelTaxesFile.id },
+        },
+      }));
+      if (fuelTaxesFileOrErr.isFailure) {
+        return null;
+      }
+      const file = fuelTaxesFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async otherIftaRequestFile(@Parent() parent?: IftaFuelTaxesResponse): Promise<CloudFileResponse> {
+    if (parent?.otherIftaRequestFile) {
+      const otherIftaRequestFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.otherIftaRequestFile.id },
+        },
+      }));
+      if (otherIftaRequestFileOrErr.isFailure) {
+        return null;
+      }
+      const file = otherIftaRequestFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
 
 
 }

@@ -1,5 +1,6 @@
 import { Field, ID,  ObjectType } from '@nestjs/graphql';
 import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response';
+
 @ObjectType()
 export class IrpRoadTaxesResponse{
   @Field(() => ID) id: string;
