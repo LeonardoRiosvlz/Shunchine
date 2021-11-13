@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Parent, ResolveField } from '@nestjs/graphql';
 
 
 import { GraphQLVoid } from 'graphql-scalars';
@@ -32,6 +32,11 @@ import { APP_MODULES } from 'src/shared/resources/modules.enum';
 import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { DotInfoEntity } from '../../entities/dot-info.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
+
+
+import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
+import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
+import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
 
 
 @Resolver(() => DotInfoResponse)
@@ -130,6 +135,250 @@ export class DotInfoResolver extends BaseResolver {
       currentPage, limit, totalPages, total,
       items: items.map(this._dotInfoMapper.persistent2Dto),
     };
+  }
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async dotFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.dotFile) {
+      const dotFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.dotFile.id },
+        },
+      }));
+      if (dotFileOrErr.isFailure) {
+        return null;
+      }
+      const file = dotFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async mcFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.mcFile) {
+      const mcFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.mcFile.id },
+        },
+      }));
+      if (mcFileOrErr.isFailure) {
+        return null;
+      }
+      const file = mcFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async taxIdFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.taxIdFile) {
+      const taxIdFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.taxIdFile.id },
+        },
+      }));
+      if (taxIdFileOrErr.isFailure) {
+        return null;
+      }
+      const file = taxIdFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async dotPinFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.dotPinFile) {
+      const dotPinFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.dotPinFile.id },
+        },
+      }));
+      if (dotPinFileOrErr.isFailure) {
+        return null;
+      }
+      const file = dotPinFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async mcPinFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.mcPinFile) {
+      const mcPinFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.mcPinFile.id },
+        },
+      }));
+      if (mcPinFileOrErr.isFailure) {
+        return null;
+      }
+      const file = mcPinFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async scacFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.scacFile) {
+      const scacFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.scacFile.id },
+        },
+      }));
+      if (scacFileOrErr.isFailure) {
+        return null;
+      }
+      const file = scacFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async ucrFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.ucrFile) {
+      const ucrFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.ucrFile.id },
+        },
+      }));
+      if (ucrFileOrErr.isFailure) {
+        return null;
+      }
+      const file = ucrFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async bocThreeFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.bocThreeFile) {
+      const bocThreeFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.bocThreeFile.id },
+        },
+      }));
+      if (bocThreeFileOrErr.isFailure) {
+        return null;
+      }
+      const file = bocThreeFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async docRoadInspectionFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.docRoadInspectionFile) {
+      const docRoadInspectionFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.docRoadInspectionFile.id },
+        },
+      }));
+      if (docRoadInspectionFileOrErr.isFailure) {
+        return null;
+      }
+      const file = docRoadInspectionFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async docAuditsFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.docAuditsFile) {
+      const docAuditsFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.docAuditsFile.id },
+        },
+      }));
+      if (docAuditsFileOrErr.isFailure) {
+        return null;
+      }
+      const file = docAuditsFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async otherDotDocumentFile(@Parent() parent?: DotInfoResponse): Promise<CloudFileResponse> {
+    if (parent?.otherDotDocumentFile) {
+      const otherDotDocumentFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.otherDotDocumentFile.id },
+        },
+      }));
+      if (otherDotDocumentFileOrErr.isFailure) {
+        return null;
+      }
+      const file = otherDotDocumentFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
   }
 
 

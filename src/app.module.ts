@@ -12,6 +12,8 @@ import { ClientModule } from './modules/client/client.module';
 import { TaxesModule } from './modules/taxes/taxes.module';
 import { CorporationEinModule } from './modules/corporation-ein/corporation-ein.module';
 import { IrpRoadTaxesModule } from './modules/irp-road-taxes/irp-road-taxes.module';
+import { IftaFuelTaxesModule } from './modules/ifta-fuel-taxes/ifta-fuel-taxes.module';
+import { DotInfoModule } from './modules/dot-info/dot-info.module';
 
 @Module({
   imports: [
@@ -27,6 +29,8 @@ import { IrpRoadTaxesModule } from './modules/irp-road-taxes/irp-road-taxes.modu
     TaxesModule,
     CorporationEinModule,
     IrpRoadTaxesModule,
+    IftaFuelTaxesModule,
+    DotInfoModule,
     FixturesModule,
 
   ],
