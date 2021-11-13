@@ -1,0 +1,5 @@
+{
+  "YardRentalWithIdDoesNotExist": "YardRental with id: '%id%' does not exists",
+  "YardRentalNameUsed": "YardRental with name: '%name%' already exists",
+  "YardRentalFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

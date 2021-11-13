@@ -1,0 +1,5 @@
+{
+  "DriverFilesWithIdDoesNotExist": "DriverFiles with id: '%id%' does not exists",
+  "DriverFilesNameUsed": "DriverFiles with name: '%name%' already exists",
+  "DriverFilesFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

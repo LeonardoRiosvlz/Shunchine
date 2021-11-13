@@ -59,6 +59,4 @@ export interface IAppConfig {
   multiTenant: boolean
 
   name: string;
-
-  apiKey: string;
 }

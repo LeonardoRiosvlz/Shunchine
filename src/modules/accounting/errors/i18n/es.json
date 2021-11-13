@@ -1,0 +1,5 @@
+{
+  "AccountingWithIdDoesNotExist": "Accounting con id: '%id%' no existe",
+  "AccountingNameUsed": "Accounting con nombre: '%name%' ya se encuentra registrada",
+  "AccountingFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

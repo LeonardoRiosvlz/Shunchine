@@ -1,0 +1,5 @@
+{
+  "IrpRoadTaxesWithIdDoesNotExist": "IrpRoadTaxes with id: '%id%' does not exists",
+  "IrpRoadTaxesNameUsed": "IrpRoadTaxes with name: '%name%' already exists",
+  "IrpRoadTaxesFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

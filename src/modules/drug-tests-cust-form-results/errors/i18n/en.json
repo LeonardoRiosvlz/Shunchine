@@ -1,0 +1,5 @@
+{
+  "DrugTestsCustFormResultsWithIdDoesNotExist": "DrugTestsCustFormResults with id: '%id%' does not exists",
+  "DrugTestsCustFormResultsNameUsed": "DrugTestsCustFormResults with name: '%name%' already exists",
+  "DrugTestsCustFormResultsFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

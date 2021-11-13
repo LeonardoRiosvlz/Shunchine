@@ -6,9 +6,9 @@ import { appConfig, appSchema } from './namespaces/app.config';
 import { databaseSchema, databaseConfig } from './namespaces/database.config';
 import { graphqlConfig, graphqlSchema } from './namespaces/graphql.config';
 import { messageConfig, messageSchema } from './namespaces/message.config';
-import { redisConfig, redisSchema } from './namespaces/redis.config';
-import { awsConfig, awsSchema } from './namespaces/aws.config';
-import { ffmpgConfig, ffmpgSchema } from './namespaces/ffmpg.config';
+import { redisConfig } from './namespaces/redis.config';
+import { awsConfig } from './namespaces/aws.config';
+
 
 @Global()
 @Module({
@@ -22,16 +22,16 @@ import { ffmpgConfig, ffmpgSchema } from './namespaces/ffmpg.config';
         messageConfig,
         redisConfig,
         awsConfig,
-        ffmpgConfig
+
       ],
       validationSchema: Joi.object({
         ...appSchema,
         ...databaseSchema,
         ...graphqlSchema,
         ...messageSchema,
-        ...redisSchema,
-        ...awsSchema,
-        ...ffmpgSchema
+        ...redisConfig,
+        ...awsConfig,
+ 
       }),
       validationOptions: { abortEarly: true },
     }),

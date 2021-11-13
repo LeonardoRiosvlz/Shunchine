@@ -1,5 +1,0 @@
-{
-  "FfmpgOptionWithIdDoesNotExist": "FfmpgOption con id: '%id%' no existe",
-  "FfmpgOptionNameUsed": "FfmpgOption con nombre: '%name%' ya se encuentra registrada",
-  "FfmpgOptionFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
-}

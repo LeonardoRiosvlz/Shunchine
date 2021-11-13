@@ -22,6 +22,7 @@ import { DeleteManyNotificationCommand } from '../../cqrs/commands/impl/delete-m
 import { BaseResolver } from 'src/shared/modules/graphql/resolvers/BaseResolver';
 import { IAppCQRSBus } from 'src/shared/modules/app-cqrs/interfaces/IAppCQRSBus';
 import { GqlAuthGuard } from 'src/shared/modules/auth/guard/graphql.guard';
+import { PermitsGuard } from 'src/shared/modules/auth/guard/permits.guard';
 import { CurrentLanguage } from 'src/shared/decorators/current-language.decorator';
 import { Result } from 'src/shared/core/class/result';
 import { NotificationEntity } from '../../entities/notification.entity';
@@ -60,7 +61,7 @@ export class NotificationResolver extends BaseResolver {
     if (resp.isFailure) this.handleErrors(resp.unwrapError(), lang);
   }
 
-  @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard, PermitsGuard)
   @Mutation(() => GraphQLVoid, { nullable: true })
   async deleteNotification(
     @Args('input') { entityId }: DeleteNotificationInput,
@@ -71,7 +72,7 @@ export class NotificationResolver extends BaseResolver {
     if (resp.isFailure) this.handleErrors(resp.unwrapError(), lang);
   }
 
-  @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard, PermitsGuard)
   @Mutation(() => GraphQLVoid, { nullable: true })
   async deleteManyNotification(
     @Args('input') { where }: DeleteManyNotificationInput,
@@ -86,7 +87,7 @@ export class NotificationResolver extends BaseResolver {
     if (resp.isFailure) this.handleErrors(resp.unwrapError(), lang);
   }
 
-  @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard, PermitsGuard)
   @Query(() => [NotificationResponse], { nullable: true })
   async getAllNotification(
     @Args('input', { nullable: true }) { where, orderBy }: GetAllNotificationInput,
@@ -120,7 +121,7 @@ export class NotificationResolver extends BaseResolver {
   }
 
 
-  @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard, PermitsGuard)
   @Query(() => PaginatedNotificationResponse, { nullable: true })
   async getPaginatedNotification(
     @Args('input', { nullable: true }) { paginator, where, orderBy }: GetPaginatedNotificationInput,

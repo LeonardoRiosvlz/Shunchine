@@ -10,7 +10,6 @@ import { IEntity } from '../../../core/interfaces/IEntity';
 import { TenantEntity, TenantFeature } from '../../tenant/entities/tenant.entity';
 import { IFixture, ModelDef } from '../interfaces/IFixture';
 import FIXTURES from '../resources/fixtures';
-import { FfmpgTemplateEntity, FfmpgTemplateFeature } from 'src/modules/ffmpg-template/entities/ffmpg-template.entity';
 import { ComputedDataService } from './computed-data.service';
 
 @Injectable()

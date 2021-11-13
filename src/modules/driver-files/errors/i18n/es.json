@@ -1,0 +1,5 @@
+{
+  "DriverFilesWithIdDoesNotExist": "DriverFiles con id: '%id%' no existe",
+  "DriverFilesNameUsed": "DriverFiles con nombre: '%name%' ya se encuentra registrada",
+  "DriverFilesFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

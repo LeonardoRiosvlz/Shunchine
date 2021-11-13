@@ -1,0 +1,5 @@
+{
+  "TrailerRentalWithIdDoesNotExist": "TrailerRental con id: '%id%' no existe",
+  "TrailerRentalNameUsed": "TrailerRental con nombre: '%name%' ya se encuentra registrada",
+  "TrailerRentalFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

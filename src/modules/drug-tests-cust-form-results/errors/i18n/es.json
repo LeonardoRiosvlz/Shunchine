@@ -1,0 +1,5 @@
+{
+  "DrugTestsCustFormResultsWithIdDoesNotExist": "DrugTestsCustFormResults con id: '%id%' no existe",
+  "DrugTestsCustFormResultsNameUsed": "DrugTestsCustFormResults con nombre: '%name%' ya se encuentra registrada",
+  "DrugTestsCustFormResultsFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

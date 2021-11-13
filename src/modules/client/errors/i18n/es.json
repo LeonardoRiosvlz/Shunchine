@@ -1,0 +1,5 @@
+{
+  "ClientWithIdDoesNotExist": "Client con id: '%id%' no existe",
+  "ClientNameUsed": "Client con nombre: '%name%' ya se encuentra registrada",
+  "ClientFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

@@ -1,0 +1,5 @@
+{
+  "YardRentalWithIdDoesNotExist": "YardRental con id: '%id%' no existe",
+  "YardRentalNameUsed": "YardRental con nombre: '%name%' ya se encuentra registrada",
+  "YardRentalFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

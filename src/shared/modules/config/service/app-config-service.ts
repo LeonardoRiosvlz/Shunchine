@@ -6,7 +6,7 @@ import { IGraphqlConfig } from '../interfaces/IGraphqlConfig';
 import { IMessageConfig } from '../interfaces/IMessageConfig';
 import { IRedisConfig } from '../interfaces/IRedisConfig';
 import { IAWSConfig } from '../interfaces/IAWSConfig';
-import { IFfmpgConfig } from '../interfaces/IFfmpgConfig';
+
 
 const logLevels: LogLevel[] = ['verbose', 'debug', 'log', 'warn', 'error'];
 function getLogLevel(level: string): LogLevel[] {
@@ -29,7 +29,6 @@ export class AppConfigService {
     frontDomain: this._configService.get<string>('app.frontDomain'),
     name: this._configService.get<string>('app.name', 'dddApp'),
     multiTenant: this._configService.get<boolean>('app.multiTenant', false),
-    apiKey: this._configService.get<string>('app.apiKey', '93dce58479e85d235a9bb63563510dcc2004b0d479056b3baf2da75cf40e039d'),
 
   };
 
@@ -59,8 +58,7 @@ export class AppConfigService {
     port: this._configService.get<number>('message.port'),
     user: this._configService.get<string>('message.email'),
     pass: this._configService.get<string>('message.password'),
-    emailValidationUrl: this._configService.get<string>('message.emailValidationUrl'),
-    emailTemplatePath: this._configService.get<string>('message.emailTemplatePath')
+    emailValidationUrl: this._configService.get<string>('message.emailValidationUrl')
   }
 
   redis: IRedisConfig = {
@@ -77,10 +75,4 @@ export class AppConfigService {
     cdnUrl: this._configService.get<string>('aws.cdnUrl')
   };
 
-  ffmpeg: IFfmpgConfig = {
-    ffpmgPath: this._configService.get<string>('ffmpg.ffpmgPath'),
-    ffprobePath: this._configService.get<string>('ffmpg.ffprobePath'),
-    flvToolPath: this._configService.get<string>('ffmpg.flvToolPath'),
-    outPath: this._configService.get<string>('ffmpg.outPath'),
-  }
 }

@@ -8,9 +8,10 @@ import { AuthModule } from './shared/modules/auth/auth.module';
 import { FilesModule } from './shared/modules/files/files.module';
 import { NotificationModule } from './shared/modules/notification/notification.module';
 import { FixturesModule } from './shared/modules/fixtures/fixtures.module';
-import { TranscoderModule } from './modules/transcoder/transcoder.module';
-import { FfmpgOptionModule } from './modules/ffmpg-option/ffmpg-option.module';
-import { FfmpgTemplateModule } from './modules/ffmpg-template/ffmpg-template.module';
+import { ClientModule } from './modules/client/client.module';
+import { TaxesModule } from './modules/taxes/taxes.module';
+import { CorporationEinModule } from './modules/corporation-ein/corporation-ein.module';
+import { IrpRoadTaxesModule } from './modules/irp-road-taxes/irp-road-taxes.module';
 
 @Module({
   imports: [
@@ -22,10 +23,12 @@ import { FfmpgTemplateModule } from './modules/ffmpg-template/ffmpg-template.mod
     AuthModule,
     FilesModule,
     NotificationModule,
-    TranscoderModule,
-    FfmpgOptionModule,
-    FfmpgTemplateModule,
+    ClientModule,
+    TaxesModule,
+    CorporationEinModule,
+    IrpRoadTaxesModule,
     FixturesModule,
+
   ],
 
   controllers: [],

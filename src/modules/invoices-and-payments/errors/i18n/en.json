@@ -1,0 +1,5 @@
+{
+  "InvoicesAndPaymentsWithIdDoesNotExist": "InvoicesAndPayments with id: '%id%' does not exists",
+  "InvoicesAndPaymentsNameUsed": "InvoicesAndPayments with name: '%name%' already exists",
+  "InvoicesAndPaymentsFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

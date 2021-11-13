@@ -1,0 +1,5 @@
+{
+  "DotInfoWithIdDoesNotExist": "DotInfo with id: '%id%' does not exists",
+  "DotInfoNameUsed": "DotInfo with name: '%name%' already exists",
+  "DotInfoFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

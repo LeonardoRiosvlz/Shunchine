@@ -6,8 +6,7 @@ export const messageConfig = registerAs('message', () => ({
   port: process.env.SMTP_PORT,
   email: process.env.SMTP_EMAIL,
   password: process.env.SMTP_PASSWORD,
-  emailValidationUrl: process.env.EMAIL_VALIDATION_URL,
-  emailTemplatePath: process.env.EMAIL_TEMPLATE_PATH
+  emailValidationUrl: process.env.EMAIL_VALIDATION_URL
 }));
 
 export const messageSchema = {

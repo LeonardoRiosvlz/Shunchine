@@ -4,5 +4,4 @@ export interface IMessageConfig {
   user: string;
   pass: string;
   emailValidationUrl: string;
-  emailTemplatePath: string;
 }

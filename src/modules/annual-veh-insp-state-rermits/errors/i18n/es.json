@@ -1,0 +1,5 @@
+{
+  "AnnualVehInspStateRermitsWithIdDoesNotExist": "AnnualVehInspStateRermits con id: '%id%' no existe",
+  "AnnualVehInspStateRermitsNameUsed": "AnnualVehInspStateRermits con nombre: '%name%' ya se encuentra registrada",
+  "AnnualVehInspStateRermitsFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

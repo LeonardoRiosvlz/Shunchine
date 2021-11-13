@@ -1,0 +1,5 @@
+{
+  "CorporationEinWithIdDoesNotExist": "CorporationEin con id: '%id%' no existe",
+  "CorporationEinNameUsed": "CorporationEin con nombre: '%name%' ya se encuentra registrada",
+  "CorporationEinFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

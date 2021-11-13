@@ -131,12 +131,11 @@ export class TenantResolver extends BaseResolver {
     if (resp.isFailure) this.handleErrors(resp.unwrapError(), lang);
     const tenantsResponses = resp.unwrap().map(this._tenantMapper.persistent2Dto);
 
-    return tenantsResponses.map(({ id, name, code, isActive }) => {
+    return tenantsResponses.map(({ id, name, code }) => {
       return {
         id,
         name,
         code,
-        isActive
       };
     });
   }
@@ -155,29 +154,6 @@ export class TenantResolver extends BaseResolver {
       currentPage, limit, totalPages, total,
       items: items.map(this._tenantMapper.persistent2Dto),
     };
-  }
-
-  @Query(() => SimplifiedTenantResponse, { nullable: true })
-  async getTenantRequest(
-    @CurrentLanguage() lang?: string,
-  ): Promise<SimplifiedTenantResponse> {
-
-    if (this._tenant && this._tenant.code) {
-      const resp = await this._cqrsBus.execQuery<Result<TenantEntity>>(new GetOneTenantQuery({
-        where: {
-          code: { eq: this._tenant.code }
-        }
-      }));
-      if (resp.isFailure) this.handleErrors(resp.unwrapError(), lang);
-      const { id, name, code, isActive } = resp.unwrap()
-      return {
-        id,
-        name,
-        code,
-        isActive
-      };
-    }
-    return null
   }
 
 

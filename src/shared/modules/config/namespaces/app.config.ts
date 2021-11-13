@@ -11,7 +11,6 @@ export const appConfig = registerAs('app', () => ({
   frontDomain: process.env.FRONT_DOMAIN,
   name: process.env.APP_NAME,
   multiTenant: process.env.MULTI_TENANT,
-  apiKey: process.env.API_KEY
 }));
 
 export const appSchema = {
@@ -25,5 +24,4 @@ export const appSchema = {
   JWT_EXPIRATION: Joi.string().default('730h'),
   FRONT_DOMAIN: Joi.string().default('http://localhost:3000/'),
   MULTI_TENANT: Joi.boolean().default(false),
-  API_KEY: Joi.string().default('93dce58479e85d235a9bb63563510dcc2004b0d479056b3baf2da75cf40e039d'),
 };

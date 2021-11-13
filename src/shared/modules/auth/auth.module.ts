@@ -4,7 +4,6 @@ import { AppConfigModule } from '../config/app-config.module';
 
 import { AuthCommandsHandlers } from './cqrs/commands';
 import { JwtStrategy } from './passport/strategies/jwt.strategy';
-import { HeaderApiKeyStrategy } from './passport/strategies/header-api-key.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { AppConfigService } from '../config/service/app-config-service';
@@ -41,7 +40,6 @@ import { AuthEventsHandlers } from './cqrs/events';
   ],
   providers: [
     JwtStrategy,
-    HeaderApiKeyStrategy,
     AuthResolver,
     PermitsGuard,
     GqlAuthGuard,
@@ -52,7 +50,6 @@ import { AuthEventsHandlers } from './cqrs/events';
   ],
   exports: [
     JwtStrategy,
-    HeaderApiKeyStrategy,
     PermitsGuard,
     GqlAuthGuard,
   ],

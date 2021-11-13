@@ -1,0 +1,5 @@
+{
+  "IftaFuelTaxesWithIdDoesNotExist": "IftaFuelTaxes con id: '%id%' no existe",
+  "IftaFuelTaxesNameUsed": "IftaFuelTaxes con nombre: '%name%' ya se encuentra registrada",
+  "IftaFuelTaxesFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

@@ -1,4 +1,4 @@
-import { Logger, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppGraphqlModule } from 'src/shared/modules/graphql/graphql.module';
 import { AppConfigModule } from 'src/shared/modules/config/app-config.module';
 import { DataAccessModule } from 'src/shared/modules/data-access/data-access.module';
@@ -21,7 +21,6 @@ import { join } from 'path';
 import { MailerModule, MailerOptions } from '@nestjs-modules/mailer';
 import { AppConfigService } from '../config/service/app-config-service';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
-import { EmailController } from './controllers/email.controller';
 
 @Module({
   imports: [
@@ -40,8 +39,7 @@ import { EmailController } from './controllers/email.controller';
           _config.smtp.port === 8465 ||
           _config.smtp.port === 443;
 
-        const templatePath = _config.smtp.emailTemplatePath
-        Logger.debug(`Map folder: [${templatePath}] as email template path.`, NotificationModule.name)
+        const templatePath = join(process.cwd(), 'templates');
         return {
           transport: {
             host: _config.smtp.host,
@@ -83,8 +81,7 @@ import { EmailController } from './controllers/email.controller';
     ...NotificationQueryHandlers,
   ],
 
-  exports: [AppMailService, AppNotificationService,],
-  controllers: [EmailController]
+  exports: [AppMailService, AppNotificationService,]
 
 })
 export class NotificationModule {

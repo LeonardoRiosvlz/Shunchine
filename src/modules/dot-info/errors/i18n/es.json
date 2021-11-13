@@ -1,0 +1,5 @@
+{
+  "DotInfoWithIdDoesNotExist": "DotInfo con id: '%id%' no existe",
+  "DotInfoNameUsed": "DotInfo con nombre: '%name%' ya se encuentra registrada",
+  "DotInfoFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}
