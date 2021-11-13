@@ -27,6 +27,11 @@ export class AnnualVehInspStateRermitsMapper implements BaseMapper<AnnualVehInsp
   persistent2Dto(persistentEntity: AnnualVehInspStateRermitsEntity): AnnualVehInspStateRermitsResponse {
     return {
       ...persistentEntity,
+      annualVehInspReportFile: persistentEntity?.annualVehInspReportFile ? { id: persistentEntity.annualVehInspReportFile } : undefined,
+      statePermitsFile: persistentEntity?.statePermitsFile ? { id: persistentEntity.statePermitsFile } : undefined,
+      newMexicoLoginFile: persistentEntity?.newMexicoLoginFile ? { id: persistentEntity.newMexicoLoginFile } : undefined,
+      newMexicoPasswordFile: persistentEntity?.newMexicoPasswordFile ? { id: persistentEntity.newMexicoPasswordFile } : undefined,
+      otherPermitInfoFile: persistentEntity?.otherPermitInfoFile ? { id: persistentEntity.otherPermitInfoFile } : undefined,
     };
   }
 

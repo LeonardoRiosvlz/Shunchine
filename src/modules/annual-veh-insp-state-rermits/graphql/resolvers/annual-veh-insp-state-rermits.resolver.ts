@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Parent, ResolveField } from '@nestjs/graphql';
 
 
 import { GraphQLVoid } from 'graphql-scalars';
@@ -32,6 +32,11 @@ import { APP_MODULES } from 'src/shared/resources/modules.enum';
 import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { AnnualVehInspStateRermitsEntity } from '../../entities/annual-veh-insp-state-rermits.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
+
+
+import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
+import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
+import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
 
 
 @Resolver(() => AnnualVehInspStateRermitsResponse)
@@ -131,6 +136,122 @@ export class AnnualVehInspStateRermitsResolver extends BaseResolver {
       items: items.map(this._annualVehInspStateRermitsMapper.persistent2Dto),
     };
   }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async annualVehInspReportFile(@Parent() parent?: AnnualVehInspStateRermitsResponse): Promise<CloudFileResponse> {
+    if (parent?.annualVehInspReportFile) {
+      const annualVehInspReportFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.annualVehInspReportFile.id },
+        },
+      }));
+      if (annualVehInspReportFileOrErr.isFailure) {
+        return null;
+      }
+      const file = annualVehInspReportFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async statePermitsFile(@Parent() parent?: AnnualVehInspStateRermitsResponse): Promise<CloudFileResponse> {
+    if (parent?.statePermitsFile) {
+      const statePermitsFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.statePermitsFile.id },
+        },
+      }));
+      if (statePermitsFileOrErr.isFailure) {
+        return null;
+      }
+      const file = statePermitsFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async newMexicoLoginFile(@Parent() parent?: AnnualVehInspStateRermitsResponse): Promise<CloudFileResponse> {
+    if (parent?.newMexicoLoginFile) {
+      const newMexicoLoginFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.newMexicoLoginFile.id },
+        },
+      }));
+      if (newMexicoLoginFileOrErr.isFailure) {
+        return null;
+      }
+      const file = newMexicoLoginFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async newMexicoPasswordFile(@Parent() parent?: AnnualVehInspStateRermitsResponse): Promise<CloudFileResponse> {
+    if (parent?.newMexicoPasswordFile) {
+      const newMexicoPasswordFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.newMexicoPasswordFile.id },
+        },
+      }));
+      if (newMexicoPasswordFileOrErr.isFailure) {
+        return null;
+      }
+      const file = newMexicoPasswordFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
+
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async otherPermitInfoFile(@Parent() parent?: AnnualVehInspStateRermitsResponse): Promise<CloudFileResponse> {
+    if (parent?.otherPermitInfoFile) {
+      const otherPermitInfoFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.otherPermitInfoFile.id },
+        },
+      }));
+      if (otherPermitInfoFileOrErr.isFailure) {
+        return null;
+      }
+      const file = otherPermitInfoFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
+
+
 
 
 }

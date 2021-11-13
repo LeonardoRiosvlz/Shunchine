@@ -16,6 +16,7 @@ import { IftaFuelTaxesModule } from './modules/ifta-fuel-taxes/ifta-fuel-taxes.m
 import { DotInfoModule } from './modules/dot-info/dot-info.module';
 import { SubstanceComplianceClearinghouseModule } from './modules/substance-compliance-clearinghouse/substance-compliance-clearinghouse.module';
 import { DriverFilesModule } from './modules/driver-files/driver-files.module';
+import { AnnualVehInspStateRermitsModule } from './modules/annual-veh-insp-state-rermits/annual-veh-insp-state-rermits.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { DriverFilesModule } from './modules/driver-files/driver-files.module';
     SubstanceComplianceClearinghouseModule,
     DriverFilesModule,
     DotInfoModule,
+    AnnualVehInspStateRermitsModule,
     FixturesModule,
 
   ],
