@@ -6,12 +6,12 @@ import { CorporationEinEntity } from '../../../entities/corporation-ein.entity';
 @ObjectType()
 export class CorporationEinFilter implements IEntityFilter<CorporationEinEntity>{
   @FilterableField(()=>String, { nullable: true }) id?: string;
-  @FilterableField(()=>String, { nullable: true }) name?: string;
+  @FilterableField(()=>String, { nullable: true }) client?: string;
+  @FilterableField(()=>String, { nullable: true}) documentType?: string;
   @FilterableField(()=>String, { nullable: true}) description?: string;
-
   @FilterableField(()=>Date ,{ nullable: true }) createdAt?: Date;
   @FilterableField(()=>Date ,{ nullable: true }) updatedAt?: Date;
 
 }
 
-export const CorporationEinFilterInput = FilterType(CorporationEinFilter);
+export const CorporationEinFilterInput = FilterType(CorporationEinFilter); 

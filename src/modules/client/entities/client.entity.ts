@@ -2,7 +2,8 @@ import { PersistentEntity } from 'src/shared/modules/data-access/mongoose/base.e
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Schema as MSchema } from 'mongoose';
 import { SchemaConstants } from 'src/shared/modules/data-access/mongoose/schema.constants';
-import { TaxesEntity } from 'src/modules/taxes/entities/taxes.entity';
+import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
+
 
 @Schema({ ...SchemaConstants, collection: 'client' })
 export class ClientEntity extends PersistentEntity {
@@ -21,6 +22,7 @@ export class ClientEntity extends PersistentEntity {
   @Prop() contactOfficePhone?: string;
   @Prop() mobilePhone?: string;
   @Prop() notes?: string;
+  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) photoFile?: string;
 }
 
 export const ClientSchema = SchemaFactory.createForClass(ClientEntity);

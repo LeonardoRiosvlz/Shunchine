@@ -1,5 +1,6 @@
 import { Field, ID,  ObjectType } from '@nestjs/graphql';
-import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response';
+
 
 @ObjectType()
 export class ClientResponse{
@@ -19,6 +20,7 @@ export class ClientResponse{
   @Field({nullable: true}) contactOfficePhone?: string;
   @Field({nullable: true}) mobilePhone?: string;
   @Field({nullable: true}) notes?: string;
+  @Field(() => CloudFileResponse, { nullable: true }) photoFile?: CloudFileResponse;
   @Field({nullable: true}) createdAt?: Date;
   @Field({nullable: true}) updatedAt?: Date;
 }

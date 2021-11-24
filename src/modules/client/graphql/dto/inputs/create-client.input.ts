@@ -17,4 +17,5 @@ export class CreateClientInput {
   @Field(() => String, {nullable: true} ) contactOfficePhone?: string;
   @Field(() => String, {nullable: true} ) mobilePhone?: string;
   @Field(() => String, {nullable: true} ) notes?: string;
+  @Field(() => ID, { nullable: true }) photoFile?: string;
 }

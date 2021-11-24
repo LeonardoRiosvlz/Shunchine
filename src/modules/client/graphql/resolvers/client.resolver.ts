@@ -36,6 +36,9 @@ import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
 import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
 import { TaxesEntity } from 'src/modules/taxes/entities/taxes.entity';
 import { GetOneTaxesQuery } from 'src/modules/taxes/cqrs/queries/impl/get-one-taxes.query';
+import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response';
+import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
+import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
 
 @Resolver(() => ClientResponse)
 export class ClientResolver extends BaseResolver {
@@ -137,6 +140,25 @@ export class ClientResolver extends BaseResolver {
 
 
 
+  @ResolveField(() => CloudFileResponse, { nullable: true })
+  async photoFile(@Parent() parent?: ClientResponse): Promise<CloudFileResponse> {
+    if (parent?.photoFile) {
+      const photoFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
+        where: {
+          id: { eq: parent.photoFile.id },
+        },
+      }));
+      if (photoFileOrErr.isFailure) {
+        return null;
+      }
+      const file = photoFileOrErr.unwrap();
+      return {
+        id: file.id,
+        key: file.key,
+        url: file.url,
+      };
+    }
+  }
 
 
 
