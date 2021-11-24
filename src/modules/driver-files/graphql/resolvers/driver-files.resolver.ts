@@ -37,6 +37,9 @@ import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
 import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
 import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
 import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+import { GetOneClientQuery } from 'src/modules/client/cqrs/queries/impl/get-one-client.query';
 
 
 @Resolver(() => DriverFilesResponse)
@@ -383,6 +386,36 @@ export class DriverFilesResolver extends BaseResolver {
     }
   }
 
+
+
+  @ResolveField(() => [SolvedEntityResponse], { nullable: true })
+  async client(@Parent() parent?: DriverFilesResponse): Promise<SolvedEntityResponse> {
+    if (parent?.client) {
+      const clientOrErr = await this._cqrsBus.execQuery<Result<ClientEntity>>(new GetOneClientQuery({where:{
+             id: {eq: parent.client.id}
+        }}));
+        if (clientOrErr.isFailure) {
+          return null;
+        }
+        const client = clientOrErr.unwrap();
+
+        return {
+          id: client.id,
+          entityName: ClientEntity.name,
+          identifier: client.companyName,
+          fields: [
+            {
+              field: 'customerName',
+              value: client.customerName
+            },
+            {
+              field: 'documentType',
+              value: client.mobilePhone
+            }
+          ]
+        }
+    }
+  }
 
 
 }

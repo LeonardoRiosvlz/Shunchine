@@ -154,8 +154,8 @@ export class CorporationEinResolver extends BaseResolver {
           identifier: client.companyName,
           fields: [
             {
-              field: 'conactOficePhone',
-              value: client.conactOficePhone
+              field: 'contactOfficePhone',
+              value: client.contactOfficePhone
             }
           ]
         }

@@ -6,8 +6,15 @@ import { ClientEntity } from '../../../entities/client.entity';
 @ObjectType()
 export class ClientFilter implements IEntityFilter<ClientEntity>{
   @FilterableField(()=>String, { nullable: true }) id?: string;
-  @FilterableField(()=>String, { nullable: true }) name?: string;
-  @FilterableField(()=>String, { nullable: true}) description?: string;
+  @FilterableField(()=>String, { nullable: true }) clientSince?: string;
+  @FilterableField(()=>String, { nullable: true}) customerName?: string;
+  @FilterableField(()=>String, { nullable: true }) tax?: string;
+  @FilterableField(()=>String, { nullable: true }) mc?: string;
+  @FilterableField(()=>String, { nullable: true}) ofTrucks?: string;
+  @FilterableField(()=>String, { nullable: true }) street?: string;
+  @FilterableField(()=>String, { nullable: true }) city?: string;
+  @FilterableField(()=>String, { nullable: true }) contactEmail?: string;
+  @FilterableField(()=>String, { nullable: true }) dot?: string;
 
   @FilterableField(()=>Date ,{ nullable: true }) createdAt?: Date;
   @FilterableField(()=>Date ,{ nullable: true }) updatedAt?: Date;

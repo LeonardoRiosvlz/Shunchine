@@ -137,33 +137,6 @@ export class ClientResolver extends BaseResolver {
 
 
 
-  @ResolveField(() => [SolvedEntityResponse], { nullable: true })
-  async tax(@Parent() parent?: ClientResponse): Promise<SolvedEntityResponse> {
-    if (parent?.tax) {
-      const patientOrErr = await this._cqrsBus.execQuery<Result<TaxesEntity>>(new GetOneTaxesQuery({where:{
-             id: {eq: parent.tax.id}
-        }}));
-        if (patientOrErr.isFailure) {
-          return null;
-        }
-        const tax = patientOrErr.unwrap();
-
-        return {
-          id: tax.id,
-          entityName: TaxesEntity.name,
-          identifier: tax.name,
-          fields: [
-            {
-              field: 'tax',
-              value: tax.tax.toString()
-            }
-          ]
-        }
-    }
-  }
-
-
-
 
 
 

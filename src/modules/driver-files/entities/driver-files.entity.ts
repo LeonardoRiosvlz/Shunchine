@@ -3,8 +3,11 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { SchemaConstants } from 'src/shared/modules/data-access/mongoose/schema.constants';
 import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
 import { PopulatedDoc, Schema as MSchema } from 'mongoose';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
 @Schema({ ...SchemaConstants, collection: 'driver-files' })
+
 export class DriverFilesEntity extends PersistentEntity {
+  @Prop({ type: MSchema.Types.ObjectId, ref: () => ClientEntity}) client: string;
   @Prop() name?: string;
   @Prop() dni?: string;
   @Prop() driveLicense?: string;

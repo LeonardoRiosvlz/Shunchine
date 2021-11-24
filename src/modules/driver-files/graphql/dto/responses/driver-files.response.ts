@@ -1,8 +1,11 @@
 import { Field, ID,  ObjectType } from '@nestjs/graphql';
 import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+
 @ObjectType()
 export class DriverFilesResponse{
   @Field(() => ID) id: string;
+  @Field(() => SolvedEntityResponse,{nullable: true}) client: SolvedEntityResponse;
   @Field(() => String, {nullable: true})  name?: string;
   @Field(() => String,{nullable: true} )  dni?: string;
   @Field(() => String, {nullable: true} )  driveLicense?: string;

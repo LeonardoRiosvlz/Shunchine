@@ -27,6 +27,7 @@ export class DriverFilesMapper implements BaseMapper<DriverFilesEntity> {
   persistent2Dto(persistentEntity: DriverFilesEntity): DriverFilesResponse {
     return {
       ...persistentEntity,
+      client: persistentEntity?.client ? { id: persistentEntity.client } : undefined,
       driveLicenseFile: persistentEntity?.driveLicenseFile ? { id: persistentEntity.driveLicenseFile } : undefined,
       medicalCardFile: persistentEntity?.medicalCardFile ? { id: persistentEntity.medicalCardFile } : undefined,
       mvrFile: persistentEntity?.mvrFile ? { id: persistentEntity.mvrFile } : undefined,

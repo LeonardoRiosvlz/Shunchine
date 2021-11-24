@@ -26,8 +26,7 @@ export class ClientMapper implements BaseMapper<ClientEntity> {
 
   persistent2Dto(persistentEntity: ClientEntity): ClientResponse {
     return {
-      ...persistentEntity,
-      tax: persistentEntity?.tax ? { id: persistentEntity.tax } : undefined,
+      ...persistentEntity
     };
   }
 

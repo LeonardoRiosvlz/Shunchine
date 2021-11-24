@@ -9,16 +9,18 @@ export class ClientEntity extends PersistentEntity {
   @Prop() clientSince?: string;
   @Prop() companyName?: string;
   @Prop() customerName?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => TaxesEntity}) tax: string;
+  @Prop() tax?: string;
+  @Prop() dot?: string;
   @Prop() mc?: string;
   @Prop() ofTrucks?: string;
   @Prop() street?: string;
   @Prop() city?: string;
   @Prop() stateProvince?: string;
   @Prop() zipPostalCode?: string;
-  @Prop() contacEmail?: string;
-  @Prop() conactOficePhone?: string;
+  @Prop() contactEmail?: string;
+  @Prop() contactOfficePhone?: string;
   @Prop() mobilePhone?: string;
+  @Prop() notes?: string;
 }
 
 export const ClientSchema = SchemaFactory.createForClass(ClientEntity);

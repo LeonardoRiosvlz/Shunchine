@@ -2,6 +2,7 @@ import { Field, InputType, ID } from '@nestjs/graphql';
 
 @InputType()
 export class CreateDriverFilesInput {
+  @Field(() => ID, {nullable: true} )  client: string;
   @Field(() => String, {nullable: true})  name?: string;
   @Field(() => String,{nullable: true} )  dni?: string;
   @Field(() => String, {nullable: true} )  driveLicense?: string;
