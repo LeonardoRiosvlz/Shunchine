@@ -1,0 +1,5 @@
+{
+  "FilesIrpRoadTaxesWithIdDoesNotExist": "FilesIrpRoadTaxes con id: '%id%' no existe",
+  "FilesIrpRoadTaxesNameUsed": "FilesIrpRoadTaxes con nombre: '%name%' ya se encuentra registrada",
+  "FilesIrpRoadTaxesFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

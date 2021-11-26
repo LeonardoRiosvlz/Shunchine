@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { IrpRoadTaxesEntityService } from './services/irp-road-taxes-entity.service';
+import { FilesIrpRoadTaxesModule } from './modules/files-irp-road-taxes/files-irp-road-taxes.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { IrpRoadTaxesEntityService } from './services/irp-road-taxes-entity.serv
     AppConfigModule,
     DataAccessModule,
     TenantModule,
+    FilesIrpRoadTaxesModule,
     AppCqrsModule,
   ],
   providers: [

@@ -27,13 +27,7 @@ export class IrpRoadTaxesMapper implements BaseMapper<IrpRoadTaxesEntity> {
   persistent2Dto(persistentEntity: IrpRoadTaxesEntity): IrpRoadTaxesResponse {
     return {
       ...persistentEntity,
-      irpFile: persistentEntity?.irpFile ? { id: persistentEntity.irpFile } : undefined,
-      certificateTitleFile: persistentEntity?.certificateTitleFile ? { id: persistentEntity.certificateTitleFile } : undefined,
-      tagFile: persistentEntity?.tagFile ? { id: persistentEntity.tagFile } : undefined,
-      roadTaxFile: persistentEntity?.roadTaxFile ? { id: persistentEntity.roadTaxFile } : undefined,
-      leaseAgreementFile: persistentEntity?.leaseAgreementFile ? { id: persistentEntity.leaseAgreementFile } : undefined,
-      irpApplicationsRenewalsFile: persistentEntity?.irpApplicationsRenewalsFile ? { id: persistentEntity.irpApplicationsRenewalsFile } : undefined,
-      otherIrpRequestFile: persistentEntity?.otherIrpRequestFile ? { id: persistentEntity.otherIrpRequestFile } : undefined,
+      client: persistentEntity?.client ? { id: persistentEntity.client } : undefined,
     };
   }
 

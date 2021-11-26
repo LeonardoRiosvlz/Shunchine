@@ -32,9 +32,9 @@ import { APP_MODULES } from 'src/shared/resources/modules.enum';
 import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { IrpRoadTaxesEntity } from '../../entities/irp-road-taxes.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
-import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response';
-import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
-import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+import { GetOneClientQuery } from 'src/modules/client/cqrs/queries/impl/get-one-client.query';
 
 @Resolver(() => IrpRoadTaxesResponse)
 export class IrpRoadTaxesResolver extends BaseResolver {
@@ -134,159 +134,31 @@ export class IrpRoadTaxesResolver extends BaseResolver {
     };
   }
 
+  @ResolveField(() => [SolvedEntityResponse], { nullable: true })
+  async client(@Parent() parent?: IrpRoadTaxesResponse): Promise<SolvedEntityResponse> {
+    if (parent?.client) {
+      const patientOrErr = await this._cqrsBus.execQuery<Result<ClientEntity>>(new GetOneClientQuery({where:{
+             id: {eq: parent.client.id}
+        }}));
+        if (patientOrErr.isFailure) {
+          return null;
+        }
+        const client = patientOrErr.unwrap();
 
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async irpFile(@Parent() parent?: IrpRoadTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.irpFile) {
-      const irpFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.irpFile.id },
-        },
-      }));
-      if (irpFileOrErr.isFailure) {
-        return null;
-      }
-      const file = irpFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
+        return {
+          id: client.id,
+          entityName: ClientEntity.name,
+          identifier: client.companyName,
+          fields: [
+            {
+              field: 'contactOfficePhone',
+              value: client.contactOfficePhone
+            }
+          ]
+        }
     }
   }
 
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async certificateTitleFile(@Parent() parent?: IrpRoadTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.certificateTitleFile) {
-      const certificateTitleFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.certificateTitleFile.id },
-        },
-      }));
-      if (certificateTitleFileOrErr.isFailure) {
-        return null;
-      }
-      const file = certificateTitleFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async tagFile(@Parent() parent?: IrpRoadTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.tagFile) {
-      const tagFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.tagFile.id },
-        },
-      }));
-      if (tagFileOrErr.isFailure) {
-        return null;
-      }
-      const file = tagFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async roadTaxFile(@Parent() parent?: IrpRoadTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.roadTaxFile) {
-      const roadTaxFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.roadTaxFile.id },
-        },
-      }));
-      if (roadTaxFileOrErr.isFailure) {
-        return null;
-      }
-      const file = roadTaxFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async leaseAgreementFile(@Parent() parent?: IrpRoadTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.leaseAgreementFile) {
-      const leaseAgreementFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.roadTaxFile.id },
-        },
-      }));
-      if (leaseAgreementFileOrErr.isFailure) {
-        return null;
-      }
-      const file = leaseAgreementFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async irpApplicationsRenewalsFile(@Parent() parent?: IrpRoadTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.irpApplicationsRenewalsFile) {
-      const irpApplicationsRenewalsFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.irpApplicationsRenewalsFile.id },
-        },
-      }));
-      if (irpApplicationsRenewalsFileOrErr.isFailure) {
-        return null;
-      }
-      const file = irpApplicationsRenewalsFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async otherIrpRequestFile(@Parent() parent?: IrpRoadTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.otherIrpRequestFile) {
-      const irpApplicationsRenewalsFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.otherIrpRequestFile.id },
-        },
-      }));
-      if (irpApplicationsRenewalsFileOrErr.isFailure) {
-        return null;
-      }
-      const file = irpApplicationsRenewalsFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
 
 
 }
