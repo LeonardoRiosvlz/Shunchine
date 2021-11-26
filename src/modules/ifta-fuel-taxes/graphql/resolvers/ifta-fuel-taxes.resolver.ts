@@ -36,6 +36,9 @@ import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
 import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
 import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
 import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+import { GetOneClientQuery } from 'src/modules/client/cqrs/queries/impl/get-one-client.query';
 
 @Resolver(() => IftaFuelTaxesResponse)
 export class IftaFuelTaxesResolver extends BaseResolver {
@@ -135,93 +138,30 @@ export class IftaFuelTaxesResolver extends BaseResolver {
     };
   }
 
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async iftaAccountFile(@Parent() parent?: IftaFuelTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.iftaAccountFile) {
-      const iftaAccountFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.iftaAccountFile.id },
-        },
-      }));
-      if (iftaAccountFileOrErr.isFailure) {
-        return null;
-      }
-      const file = iftaAccountFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
+  
+  @ResolveField(() => [SolvedEntityResponse], { nullable: true })
+  async client(@Parent() parent?: IftaFuelTaxesResponse): Promise<SolvedEntityResponse> {
+    if (parent?.client) {
+      const patientOrErr = await this._cqrsBus.execQuery<Result<ClientEntity>>(new GetOneClientQuery({where:{
+             id: {eq: parent.client.id}
+        }}));
+        if (patientOrErr.isFailure) {
+          return null;
+        }
+        const client = patientOrErr.unwrap();
+
+        return {
+          id: client.id,
+          entityName: ClientEntity.name,
+          identifier: client.companyName,
+          fields: [
+            {
+              field: 'contactOfficePhone',
+              value: client.contactOfficePhone
+            }
+          ]
+        }
     }
   }
-
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async iftaApplRenewalsChangesFile(@Parent() parent?: IftaFuelTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.iftaApplRenewalsChangesFile) {
-      const iftaApplRenewalsChangesFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.iftaApplRenewalsChangesFile.id },
-        },
-      }));
-      if (iftaApplRenewalsChangesFileOrErr.isFailure) {
-        return null;
-      }
-      const file = iftaApplRenewalsChangesFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async fuelTaxesFile(@Parent() parent?: IftaFuelTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.fuelTaxesFile) {
-      const fuelTaxesFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.fuelTaxesFile.id },
-        },
-      }));
-      if (fuelTaxesFileOrErr.isFailure) {
-        return null;
-      }
-      const file = fuelTaxesFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
-
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async otherIftaRequestFile(@Parent() parent?: IftaFuelTaxesResponse): Promise<CloudFileResponse> {
-    if (parent?.otherIftaRequestFile) {
-      const otherIftaRequestFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.otherIftaRequestFile.id },
-        },
-      }));
-      if (otherIftaRequestFileOrErr.isFailure) {
-        return null;
-      }
-      const file = otherIftaRequestFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
 
 }

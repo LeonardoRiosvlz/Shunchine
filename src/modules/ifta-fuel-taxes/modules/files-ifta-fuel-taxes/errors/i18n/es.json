@@ -1,0 +1,5 @@
+{
+  "FilesIftaFuelTaxesWithIdDoesNotExist": "FilesIftaFuelTaxes con id: '%id%' no existe",
+  "FilesIftaFuelTaxesNameUsed": "FilesIftaFuelTaxes con nombre: '%name%' ya se encuentra registrada",
+  "FilesIftaFuelTaxesFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

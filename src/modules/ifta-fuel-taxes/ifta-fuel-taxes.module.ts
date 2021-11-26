@@ -34,6 +34,7 @@ import { IftaFuelTaxesEntityService } from './services/ifta-fuel-taxes-entity.se
     ...IftaFuelTaxesQueryHandlers,
   ],
 
+
 })
 export class IftaFuelTaxesModule {
 

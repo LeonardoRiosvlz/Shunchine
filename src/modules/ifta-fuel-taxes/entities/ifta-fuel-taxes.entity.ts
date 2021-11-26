@@ -1,26 +1,27 @@
 import { PersistentEntity } from 'src/shared/modules/data-access/mongoose/base.entity';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { SchemaConstants } from 'src/shared/modules/data-access/mongoose/schema.constants';
-import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
 import { PopulatedDoc, Schema as MSchema } from 'mongoose';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+
+export enum IftaDocumentType{
+  IFTA_ACCOUNT='IFTA_ACCOUNT',
+  IFTA_APPLICATION_RENEWALS_CHANGE='IFTA_APPLICATION_RENEWALS_CHANGE',
+  FUEL_TAXES='FUEL_TAXES',
+  OTHER_IFTA_REQUEST='OTHER_IFTA_REQUEST',
+}
+
+
 
 @Schema({ ...SchemaConstants, collection: 'ifta-fuel-taxes' })
 export class IftaFuelTaxesEntity extends PersistentEntity {
-  @Prop() iftaAccount?: string;
-  @Prop() iftaAccountDetail?: string;
-  @Prop() iftaAccountExpiration?: Date;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) iftaAccountFile?: string;
-  @Prop() iftaApplRenewalsChanges?: string;
-  @Prop() iftaApplRenewalsChangesDetail?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) iftaApplRenewalsChangesFile?: string;
-  @Prop() fuelTaxes?: string;
-  @Prop() fuelTaxesDetail?: string;
-  @Prop() fuelTaxesExpiration?: Date;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) fuelTaxesFile?: string;
-  @Prop() otherIftaRequest?: string;
-  @Prop() otherIftaRequestDetail?: string;
-  @Prop() otherIftaRequestExpiration?: Date;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) otherIftaRequestFile?: string;
+  @Prop({ type: MSchema.Types.ObjectId, ref: () => ClientEntity}) client: string;
+  @Prop({type:String}) documentType: IftaDocumentType;
+  @Prop() expiration: Date;
+  @Prop() expires: boolean;
+  @Prop() archived?: boolean;
+  @Prop() description?: string;
+  @Prop() number?: string;
   @Prop() notes?: string;
 }
 
