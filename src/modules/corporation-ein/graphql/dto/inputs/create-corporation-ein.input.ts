@@ -7,5 +7,7 @@ export class CreateCorporationEinInput {
   @Field(() => DocumentType, )  documentType: DocumentType;
   @Field(() => Date )  expiration: Date;
   @Field(() => Boolean )  expires: boolean;
+  @Field(() => Boolean, {nullable: true})  archived?: boolean;
   @Field(() => String, {nullable: true} )  description?: string;
+  @Field(() => String, {nullable: true} )  number?: string;
 }

@@ -1,0 +1,5 @@
+{
+  "FilesCorporationEinWithIdDoesNotExist": "FilesCorporationEin con id: '%id%' no existe",
+  "FilesCorporationEinNameUsed": "FilesCorporationEin con nombre: '%name%' ya se encuentra registrada",
+  "FilesCorporationEinFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

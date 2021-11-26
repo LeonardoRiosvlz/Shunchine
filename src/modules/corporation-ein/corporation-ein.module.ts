@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { CorporationEinEntityService } from './services/corporation-ein-entity.service';
+import { FilesCorporationEinModule } from './modules/files-corporation-ein/files-corporation-ein.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CorporationEinEntityService } from './services/corporation-ein-entity.s
     AppConfigModule,
     DataAccessModule,
     TenantModule,
+    FilesCorporationEinModule,
     AppCqrsModule,
   ],
   providers: [
