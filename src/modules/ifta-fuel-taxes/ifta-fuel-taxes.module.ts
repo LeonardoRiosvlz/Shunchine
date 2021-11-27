@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { IftaFuelTaxesEntityService } from './services/ifta-fuel-taxes-entity.service';
+import { FilesIftaFuelTaxesModule } from './modules/files-ifta-fuel-taxes/files-ifta-fuel-taxes.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { IftaFuelTaxesEntityService } from './services/ifta-fuel-taxes-entity.se
     AppConfigModule,
     DataAccessModule,
     TenantModule,
+    FilesIftaFuelTaxesModule,
     AppCqrsModule,
   ],
   providers: [

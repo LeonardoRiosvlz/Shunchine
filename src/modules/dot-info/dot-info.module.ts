@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { DotInfoEntityService } from './services/dot-info-entity.service';
+import { FilesDotInfoModule } from './modules/files-dot-info/files-dot-info.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { DotInfoEntityService } from './services/dot-info-entity.service';
     AppConfigModule,
     DataAccessModule,
     TenantModule,
+    FilesDotInfoModule,
     AppCqrsModule,
   ],
   providers: [

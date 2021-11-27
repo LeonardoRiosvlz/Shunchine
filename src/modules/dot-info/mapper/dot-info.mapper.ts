@@ -27,17 +27,7 @@ export class DotInfoMapper implements BaseMapper<DotInfoEntity> {
   persistent2Dto(persistentEntity: DotInfoEntity): DotInfoResponse {
     return {
       ...persistentEntity,
-      dotFile: persistentEntity?.dotFile ? { id: persistentEntity.dotFile } : undefined,
-      mcFile: persistentEntity?.mcFile ? { id: persistentEntity.mcFile } : undefined,
-      taxIdFile: persistentEntity?.taxIdFile ? { id: persistentEntity.taxIdFile } : undefined,
-      dotPinFile: persistentEntity?.dotPinFile ? { id: persistentEntity.dotPinFile } : undefined,
-      mcPinFile: persistentEntity?.mcPinFile ? { id: persistentEntity.mcPinFile } : undefined,
-      scacFile: persistentEntity?.scacFile ? { id: persistentEntity.scacFile } : undefined,
-      ucrFile: persistentEntity?.ucrFile ? { id: persistentEntity.ucrFile } : undefined,
-      bocThreeFile: persistentEntity?.bocThreeFile ? { id: persistentEntity.bocThreeFile } : undefined,
-      docRoadInspectionFile: persistentEntity?.docRoadInspectionFile ? { id: persistentEntity.docRoadInspectionFile } : undefined,
-      docAuditsFile: persistentEntity?.docAuditsFile ? { id: persistentEntity.docAuditsFile } : undefined,
-      otherDotDocumentFile: persistentEntity?.otherDotDocumentFile ? { id: persistentEntity.otherDotDocumentFile } : undefined,
+      client: persistentEntity?.client ? { id: persistentEntity.client } : undefined,
     };
   }
 

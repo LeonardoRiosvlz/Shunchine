@@ -1,0 +1,5 @@
+{
+  "FilesDotInfoWithIdDoesNotExist": "FilesDotInfo with id: '%id%' does not exists",
+  "FilesDotInfoNameUsed": "FilesDotInfo with name: '%name%' already exists",
+  "FilesDotInfoFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

@@ -1,0 +1,5 @@
+{
+  "FilesDotInfoWithIdDoesNotExist": "FilesDotInfo con id: '%id%' no existe",
+  "FilesDotInfoNameUsed": "FilesDotInfo con nombre: '%name%' ya se encuentra registrada",
+  "FilesDotInfoFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

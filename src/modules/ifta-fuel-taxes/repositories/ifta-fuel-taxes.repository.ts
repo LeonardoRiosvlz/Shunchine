@@ -19,6 +19,5 @@ export class IftaFuelTaxesRepository extends BaseRepository<IftaFuelTaxesEntity,
   }
   async afterDelete(iftaFuelTaxes: IftaFuelTaxesEntity): Promise<void> {
     await this._filesIftaFuelTaxesRepository.deleteMany({ iftaFuelTaxes: { eq: iftaFuelTaxes.id } });
-
   }
 }

@@ -33,9 +33,7 @@ import { FilesIftaFuelTaxesEntityService } from './services/files-ifta-fuel-taxe
     ...FilesIftaFuelTaxesCommandHandlers,
     ...FilesIftaFuelTaxesQueryHandlers,
   ],
-  exports:[
-    FilesIftaFuelTaxesRepository
-  ]
+  exports:[FilesIftaFuelTaxesRepository]
 
 })
 export class FilesIftaFuelTaxesModule {
