@@ -27,8 +27,7 @@ export class TrailerRentalMapper implements BaseMapper<TrailerRentalEntity> {
   persistent2Dto(persistentEntity: TrailerRentalEntity): TrailerRentalResponse {
     return {
       ...persistentEntity,
-      file: persistentEntity?.file ? { id: persistentEntity.file } : undefined,
-
+      client: persistentEntity?.client ? { id: persistentEntity.client } : undefined,
     };
   }
 

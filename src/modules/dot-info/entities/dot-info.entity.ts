@@ -24,7 +24,7 @@ export enum DotInfoDocumentType{
 export class DotInfoEntity extends PersistentEntity {
   @Prop({ type: MSchema.Types.ObjectId, ref: () => ClientEntity}) client: string;
   @Prop({type:String}) documentType: DotInfoDocumentType;
-  @Prop() expiration: Date;
+  @Prop() expiration?: Date;
   @Prop() expires: boolean;
   @Prop() archived?: boolean;
   @Prop() description?: string;

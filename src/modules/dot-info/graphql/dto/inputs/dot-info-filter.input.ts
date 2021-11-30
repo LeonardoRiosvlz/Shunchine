@@ -6,9 +6,13 @@ import { DotInfoEntity } from '../../../entities/dot-info.entity';
 @ObjectType()
 export class DotInfoFilter implements IEntityFilter<DotInfoEntity>{
   @FilterableField(()=>String, { nullable: true }) id?: string;
-  @FilterableField(()=>String, { nullable: true }) name?: string;
-  @FilterableField(()=>String, { nullable: true}) description?: string;
-
+  @FilterableField(()=>String, { nullable: true }) client?: string;
+  @FilterableField(()=>String, { nullable: true }) expiration?: string;
+  @FilterableField(()=>String, { nullable: true }) expires?: string;
+  @FilterableField(()=>String, { nullable: true }) archived?: string;
+  @FilterableField(()=>String, { nullable: true }) number?: string;
+  @FilterableField(()=>String, { nullable: true }) notes?: string;
+  @FilterableField(()=>String, { nullable: true }) description?: string;
   @FilterableField(()=>Date ,{ nullable: true }) createdAt?: Date;
   @FilterableField(()=>Date ,{ nullable: true }) updatedAt?: Date;
 

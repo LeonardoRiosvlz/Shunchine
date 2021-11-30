@@ -3,25 +3,25 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { SchemaConstants } from 'src/shared/modules/data-access/mongoose/schema.constants';
 import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
 import { PopulatedDoc, Schema as MSchema } from 'mongoose';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+
+export enum AnnualVehInspDocumentType{
+  ANNUAL_VEHICLE_INSPECTION_REPORT='ANNUAL_VEHICLE_INSPECTION_REPORT',
+  STATE_PERMITS='STATE_PERMITS',
+  NEW_MEXICO_PASSWORD='NEW_MEXICO_PASSWORD',
+  OTHER_PERMIT_INFO='OTHER_PERMIT_INFO',
+}
+
 
 @Schema({ ...SchemaConstants, collection: 'annual-veh-insp-state-rermits' })
 export class AnnualVehInspStateRermitsEntity extends PersistentEntity {
-  @Prop() annualVehInspReport?: string;
-  @Prop() annualVehInspReportUnbound?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) annualVehInspReportFile?: string;
-  @Prop() statePermits?: string;
-  @Prop() statePermitsUnbound?: string;
-  @Prop() statePermitsExpiration?: Date;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) statePermitsFile?: string;
-  @Prop() newMexicoLogin?: string;
-  @Prop() newMexicoLoginUnbound?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) newMexicoLoginFile?: string;
-  @Prop() newMexicoPassword?: string;
-  @Prop() newMexicoPasswordUnbound?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) newMexicoPasswordFile?: string;
-  @Prop() otherPermitInfo?: string;
-  @Prop() otherPermitInfoUnbound?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) otherPermitInfoFile?: string;
+  @Prop({ type: MSchema.Types.ObjectId, ref: () => ClientEntity}) client: string;
+  @Prop({type:String}) documentType: AnnualVehInspDocumentType;
+  @Prop() expiration?: Date;
+  @Prop() expires: boolean;
+  @Prop() archived?: boolean;
+  @Prop() description?: string;
+  @Prop() number?: string;
   @Prop() notes?: string;
 }
 

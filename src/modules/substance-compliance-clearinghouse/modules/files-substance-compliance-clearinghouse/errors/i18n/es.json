@@ -1,0 +1,5 @@
+{
+  "FilesSubstanceComplianceClearinghouseWithIdDoesNotExist": "FilesSubstanceComplianceClearinghouse con id: '%id%' no existe",
+  "FilesSubstanceComplianceClearinghouseNameUsed": "FilesSubstanceComplianceClearinghouse con nombre: '%name%' ya se encuentra registrada",
+  "FilesSubstanceComplianceClearinghouseFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

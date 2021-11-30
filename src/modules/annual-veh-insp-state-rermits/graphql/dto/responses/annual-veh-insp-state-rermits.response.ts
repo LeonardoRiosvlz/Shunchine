@@ -1,26 +1,21 @@
-import { Field, ID,  ObjectType } from '@nestjs/graphql';
+import { Field, ID,  ObjectType, registerEnumType } from '@nestjs/graphql';
+import { AnnualVehInspDocumentType } from 'src/modules/annual-veh-insp-state-rermits/entities/annual-veh-insp-state-rermits.entity';
 import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+
+registerEnumType(AnnualVehInspDocumentType, { name: 'AnnualVehInspDocumentType' });
 
 
 @ObjectType()
 export class AnnualVehInspStateRermitsResponse{
   @Field(() => ID) id: string;
-  @Field(() => String, {nullable: true})  annualVehInspReport?: string;
-  @Field(() => String, {nullable: true} )  annualVehInspReportUnbound?: string;
-  @Field(() => CloudFileResponse, { nullable: true }) annualVehInspReportFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  statePermits?: string;
-  @Field(() => String, {nullable: true} )  statePermitsUnbound?: string;
-  @Field(() => Date, {nullable: true} )  statePermitsExpiration?: Date;
-  @Field(() => CloudFileResponse, { nullable: true }) statePermitsFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  newMexicoLogin?: string;
-  @Field(() => String, {nullable: true} )  newMexicoLoginUnbound?: string;
-  @Field(() => CloudFileResponse, { nullable: true }) newMexicoLoginFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  newMexicoPassword?: string;
-  @Field(() => String, {nullable: true} )  newMexicoPasswordUnbound?: string;
-  @Field(() => CloudFileResponse, { nullable: true }) newMexicoPasswordFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  otherPermitInfo?: string;
-  @Field(() => String, {nullable: true} )  otherPermitInfoUnbound?: string;
-  @Field(() => CloudFileResponse, { nullable: true }) otherPermitInfoFile?: CloudFileResponse;
+  @Field(() => SolvedEntityResponse, { nullable: true }) client: SolvedEntityResponse;
+  @Field(() => AnnualVehInspDocumentType, )  documentType: AnnualVehInspDocumentType;
+  @Field(() => Date,{nullable: true} )  expiration?: Date;
+  @Field(() => Boolean )  expires: boolean;
+  @Field(() => Boolean ,{nullable: true})  archived?: boolean;
+  @Field(() => String, {nullable: true} )  description?: string;
+  @Field(() => String, {nullable: true} )  number?: string;
   @Field(() => String, {nullable: true} )  notes?: string;
   @Field({nullable: true}) createdAt?: Date;
   @Field({nullable: true}) updatedAt?: Date;

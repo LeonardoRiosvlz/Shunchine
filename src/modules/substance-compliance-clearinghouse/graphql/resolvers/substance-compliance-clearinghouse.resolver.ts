@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Parent, ResolveField } from '@nestjs/graphql';
 
 
 import { GraphQLVoid } from 'graphql-scalars';
@@ -32,6 +32,9 @@ import { APP_MODULES } from 'src/shared/resources/modules.enum';
 import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { SubstanceComplianceClearinghouseEntity } from '../../entities/substance-compliance-clearinghouse.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+import { GetOneClientQuery } from 'src/modules/client/cqrs/queries/impl/get-one-client.query';
 
 
 @Resolver(() => SubstanceComplianceClearinghouseResponse)
@@ -130,6 +133,33 @@ export class SubstanceComplianceClearinghouseResolver extends BaseResolver {
       currentPage, limit, totalPages, total,
       items: items.map(this._substanceComplianceClearinghouseMapper.persistent2Dto),
     };
+  }
+
+
+
+  @ResolveField(() => [SolvedEntityResponse], { nullable: true })
+  async client(@Parent() parent?: SubstanceComplianceClearinghouseResponse): Promise<SolvedEntityResponse> {
+    if (parent?.client) {
+      const patientOrErr = await this._cqrsBus.execQuery<Result<ClientEntity>>(new GetOneClientQuery({where:{
+             id: {eq: parent.client.id}
+        }}));
+        if (patientOrErr.isFailure) {
+          return null;
+        }
+        const client = patientOrErr.unwrap();
+
+        return {
+          id: client.id,
+          entityName: ClientEntity.name,
+          identifier: client.companyName,
+          fields: [
+            {
+              field: 'contactOfficePhone',
+              value: client.contactOfficePhone
+            }
+          ]
+        }
+    }
   }
 
 

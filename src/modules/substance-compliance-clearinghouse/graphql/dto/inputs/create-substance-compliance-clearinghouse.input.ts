@@ -1,26 +1,14 @@
 import { Field, InputType, ID } from '@nestjs/graphql';
+import { SubstanceComplianceDocumentType } from 'src/modules/substance-compliance-clearinghouse/entities/substance-compliance-clearinghouse.entity';
 
 @InputType()
 export class CreateSubstanceComplianceClearinghouseInput {
-  @Field(() => String, {nullable: true})  drugRandomEnrollment?: string;
-  @Field(() => String, {nullable: true} )  drugRandomEnrollmentDetail?: string;
-  @Field(() => Date, {nullable: true} )  drugRandomEnrollmentExpiration?: Date;
-  @Field(() => ID, { nullable: true }) drugRandomEnrollmentFile?: string;
-  @Field(() => String, {nullable: true})  reasonableSuspicious?: string;
-  @Field(() => String, {nullable: true} )  reasonableSuspiciousDetail?: string;
-  @Field(() => Date, {nullable: true} )  reasonableSuspiciousExpiration?: Date;
-  @Field(() => ID, { nullable: true }) reasonableSuspiciousFile?: string;
-  @Field(() => String, {nullable: true})  clearingHouseLogin?: string;
-  @Field(() => String, {nullable: true} )  clearingHouseLoginDetail?: string;
-  @Field(() => ID, { nullable: true }) clearingHouseLoginFile?: string;
-  @Field(() => String, {nullable: true})  clearingHousePassword?: string;
-  @Field(() => String, {nullable: true} )  clearingHousePasswordDetail?: string;
-  @Field(() => ID, { nullable: true }) clearingHousePasswordFile?: string;
-  @Field(() => String, {nullable: true})  clearingHouseRegQueries?: string;
-  @Field(() => String, {nullable: true} )  clearingHouseRegQueriesDetail?: string;
-  @Field(() => ID, { nullable: true }) clearingHouseRegQueriesFile?: string;
-  @Field(() => String, {nullable: true})  otherSubstanceRequest?: string;
-  @Field(() => String, {nullable: true} )  otherSubstanceRequestDetail?: string;
-  @Field(() => ID, { nullable: true }) otherSubstanceRequestFile?: string;
+  @Field(() => ID, {nullable: true}) client: string;
+  @Field(() => SubstanceComplianceDocumentType )  documentType: SubstanceComplianceDocumentType;
+  @Field(() => Date, {nullable: true} )  expiration?: Date;
+  @Field(() => Boolean )  expires: boolean;
+  @Field(() => Boolean, {nullable: true})  archived?: boolean;
+  @Field(() => String, {nullable: true} )  description?: string;
+  @Field(() => String, {nullable: true} )  number?: string;
   @Field(() => String, {nullable: true} )  notes?: string;
 }

@@ -5,7 +5,7 @@ import { DocumentType } from 'src/modules/corporation-ein/entities/corporation-e
 export class CreateCorporationEinInput {
   @Field(() => ID, {nullable: true}) client: string;
   @Field(() => DocumentType, )  documentType: DocumentType;
-  @Field(() => Date )  expiration: Date;
+  @Field(() => Date, {nullable: true} )  expiration?: Date;
   @Field(() => Boolean )  expires: boolean;
   @Field(() => Boolean, {nullable: true})  archived?: boolean;
   @Field(() => String, {nullable: true} )  description?: string;

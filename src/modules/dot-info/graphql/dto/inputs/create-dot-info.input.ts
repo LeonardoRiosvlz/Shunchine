@@ -5,7 +5,7 @@ import { DotInfoDocumentType } from 'src/modules/dot-info/entities/dot-info.enti
 export class CreateDotInfoInput {
   @Field(() => ID, {nullable: true}) client: string;
   @Field(() => DotInfoDocumentType )  documentType: DotInfoDocumentType;
-  @Field(() => Date )  expiration: Date;
+  @Field(() => Date , {nullable: true})  expiration?: Date;
   @Field(() => Boolean )  expires: boolean;
   @Field(() => Boolean, {nullable: true})  archived?: boolean;
   @Field(() => String, {nullable: true} )  description?: string;

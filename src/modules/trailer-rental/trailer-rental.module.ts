@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { TrailerRentalEntityService } from './services/trailer-rental-entity.service';
+import { FilesTrailerRentalModule } from './modules/files-trailer-rental/files-trailer-rental.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { TrailerRentalEntityService } from './services/trailer-rental-entity.ser
     AppConfigModule,
     DataAccessModule,
     TenantModule,
+    FilesTrailerRentalModule,
     AppCqrsModule,
   ],
   providers: [

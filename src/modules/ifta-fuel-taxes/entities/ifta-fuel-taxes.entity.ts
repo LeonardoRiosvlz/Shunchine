@@ -17,7 +17,7 @@ export enum IftaDocumentType{
 export class IftaFuelTaxesEntity extends PersistentEntity {
   @Prop({ type: MSchema.Types.ObjectId, ref: () => ClientEntity}) client: string;
   @Prop({type:String}) documentType: IftaDocumentType;
-  @Prop() expiration: Date;
+  @Prop() expiration?: Date;
   @Prop() expires: boolean;
   @Prop() archived?: boolean;
   @Prop() description?: string;

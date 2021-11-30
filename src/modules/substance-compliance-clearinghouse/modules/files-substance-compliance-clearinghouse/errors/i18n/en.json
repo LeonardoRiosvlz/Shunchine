@@ -1,0 +1,5 @@
+{
+  "FilesSubstanceComplianceClearinghouseWithIdDoesNotExist": "FilesSubstanceComplianceClearinghouse with id: '%id%' does not exists",
+  "FilesSubstanceComplianceClearinghouseNameUsed": "FilesSubstanceComplianceClearinghouse with name: '%name%' already exists",
+  "FilesSubstanceComplianceClearinghouseFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

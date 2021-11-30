@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { SubstanceComplianceClearinghouseEntityService } from './services/substance-compliance-clearinghouse-entity.service';
+import { FilesSubstanceComplianceClearinghouseModule } from './modules/files-substance-compliance-clearinghouse/files-substance-compliance-clearinghouse.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SubstanceComplianceClearinghouseEntityService } from './services/substa
     AppConfigModule,
     DataAccessModule,
     TenantModule,
+    FilesSubstanceComplianceClearinghouseModule,
     AppCqrsModule,
   ],
   providers: [

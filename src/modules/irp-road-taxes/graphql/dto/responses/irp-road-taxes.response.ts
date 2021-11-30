@@ -9,7 +9,7 @@ export class IrpRoadTaxesResponse{
   @Field(() => ID) id: string;
   @Field(() => SolvedEntityResponse, { nullable: true }) client: SolvedEntityResponse;
   @Field(() => IrpRoadTaxesType, )  documentType: IrpRoadTaxesType;
-  @Field(() => Date )  expiration: Date;
+  @Field(() => Date ,{nullable: true} )  expiration?: Date;
   @Field(() => Boolean )  expires: boolean;
   @Field(() => Boolean ,{nullable: true})  archived?: boolean;
   @Field(() => String, {nullable: true} )  description?: string;

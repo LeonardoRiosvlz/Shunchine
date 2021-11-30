@@ -27,12 +27,7 @@ export class SubstanceComplianceClearinghouseMapper implements BaseMapper<Substa
   persistent2Dto(persistentEntity: SubstanceComplianceClearinghouseEntity): SubstanceComplianceClearinghouseResponse {
     return {
       ...persistentEntity,
-      drugRandomEnrollmentFile: persistentEntity?.drugRandomEnrollmentFile ? { id: persistentEntity.drugRandomEnrollmentFile } : undefined,
-      reasonableSuspiciousFile: persistentEntity?.reasonableSuspiciousFile ? { id: persistentEntity.reasonableSuspiciousFile } : undefined,
-      clearingHouseLoginFile: persistentEntity?.clearingHouseLoginFile ? { id: persistentEntity.clearingHouseLoginFile } : undefined,
-      clearingHousePasswordFile: persistentEntity?.clearingHousePasswordFile ? { id: persistentEntity.clearingHousePasswordFile } : undefined,
-      clearingHouseRegQueriesFile: persistentEntity?.clearingHouseRegQueriesFile ? { id: persistentEntity.clearingHouseRegQueriesFile } : undefined,
-      otherSubstanceRequestFile: persistentEntity?.otherSubstanceRequestFile ? { id: persistentEntity.otherSubstanceRequestFile } : undefined,
+      client: persistentEntity?.client ? { id: persistentEntity.client } : undefined,
     };
   }
 

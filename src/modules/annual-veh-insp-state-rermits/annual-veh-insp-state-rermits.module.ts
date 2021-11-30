@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { AnnualVehInspStateRermitsEntityService } from './services/annual-veh-insp-state-rermits-entity.service';
+import { FilesAnnualVehIspModule } from './modules/files-annual-veh-isp/files-annual-veh-isp.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AnnualVehInspStateRermitsEntityService } from './services/annual-veh-in
     AppConfigModule,
     DataAccessModule,
     TenantModule,
+    FilesAnnualVehIspModule,
     AppCqrsModule,
   ],
   providers: [

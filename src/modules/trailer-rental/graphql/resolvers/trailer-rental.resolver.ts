@@ -34,10 +34,6 @@ import { TrailerRentalEntity } from '../../entities/trailer-rental.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
 
 
-import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
-import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
-import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
-
 
 @Resolver(() => TrailerRentalResponse)
 export class TrailerRentalResolver extends BaseResolver {
@@ -137,26 +133,6 @@ export class TrailerRentalResolver extends BaseResolver {
     };
   }
 
-
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async file(@Parent() parent?: TrailerRentalResponse): Promise<CloudFileResponse> {
-    if (parent?.file) {
-      const fileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.file.id },
-        },
-      }));
-      if (fileOrErr.isFailure) {
-        return null;
-      }
-      const file = fileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
 
 
 

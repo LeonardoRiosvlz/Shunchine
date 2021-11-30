@@ -1,0 +1,5 @@
+{
+  "FilesTrailerRentalWithIdDoesNotExist": "FilesTrailerRental with id: '%id%' does not exists",
+  "FilesTrailerRentalNameUsed": "FilesTrailerRental with name: '%name%' already exists",
+  "FilesTrailerRentalFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

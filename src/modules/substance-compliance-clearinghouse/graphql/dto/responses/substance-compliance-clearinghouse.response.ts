@@ -1,28 +1,21 @@
-import { Field, ID,  ObjectType } from '@nestjs/graphql';
+import { Field, ID,  ObjectType , registerEnumType} from '@nestjs/graphql';
+import { SubstanceComplianceDocumentType } from 'src/modules/substance-compliance-clearinghouse/entities/substance-compliance-clearinghouse.entity';
 import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+
+registerEnumType(SubstanceComplianceDocumentType, { name: 'SubstanceComplianceDocumentType' });
+
+
 @ObjectType()
 export class SubstanceComplianceClearinghouseResponse{
   @Field(() => ID) id: string;
-  @Field(() => String, {nullable: true})  drugRandomEnrollment?: string;
-  @Field(() => String, {nullable: true} )  drugRandomEnrollmentDetail?: string;
-  @Field(() => Date, {nullable: true} )  drugRandomEnrollmentExpiration?: Date;
-  @Field(() => CloudFileResponse, { nullable: true }) drugRandomEnrollmentFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  reasonableSuspicious?: string;
-  @Field(() => String, {nullable: true} )  reasonableSuspiciousDetail?: string;
-  @Field(() => Date, {nullable: true} )  reasonableSuspiciousExpiration?: Date;
-  @Field(() => CloudFileResponse, { nullable: true }) reasonableSuspiciousFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  clearingHouseLogin?: string;
-  @Field(() => String, {nullable: true} )  clearingHouseLoginDetail?: string;
-  @Field(() => CloudFileResponse, { nullable: true }) clearingHouseLoginFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  clearingHousePassword?: string;
-  @Field(() => String, {nullable: true} )  clearingHousePasswordDetail?: string;
-  @Field(() => CloudFileResponse, { nullable: true }) clearingHousePasswordFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  clearingHouseRegQueries?: string;
-  @Field(() => String, {nullable: true} )  clearingHouseRegQueriesDetail?: string;
-  @Field(() => CloudFileResponse, { nullable: true }) clearingHouseRegQueriesFile?: CloudFileResponse;
-  @Field(() => String, {nullable: true})  otherSubstanceRequest?: string;
-  @Field(() => String, {nullable: true} )  otherSubstanceRequestDetail?: string;
-  @Field(() => CloudFileResponse, { nullable: true }) otherSubstanceRequestFile?: CloudFileResponse;
+  @Field(() => SolvedEntityResponse, { nullable: true }) client: SolvedEntityResponse;
+  @Field(() => SubstanceComplianceDocumentType, )  documentType: SubstanceComplianceDocumentType;
+  @Field(() => Date ,{nullable: true})  expiration?: Date;
+  @Field(() => Boolean )  expires: boolean;
+  @Field(() => Boolean ,{nullable: true})  archived?: boolean;
+  @Field(() => String, {nullable: true} )  description?: string;
+  @Field(() => String, {nullable: true} )  number?: string;
   @Field(() => String, {nullable: true} )  notes?: string;
   @Field({nullable: true}) createdAt?: Date;
   @Field({nullable: true}) updatedAt?: Date;

@@ -1,0 +1,5 @@
+{
+  "FilesAnnualVehIspWithIdDoesNotExist": "FilesAnnualVehIsp con id: '%id%' no existe",
+  "FilesAnnualVehIspNameUsed": "FilesAnnualVehIsp con nombre: '%name%' ya se encuentra registrada",
+  "FilesAnnualVehIspFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

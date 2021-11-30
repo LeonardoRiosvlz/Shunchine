@@ -18,7 +18,7 @@ export enum DocumentType{
 export class CorporationEinEntity extends PersistentEntity {
   @Prop({ type: MSchema.Types.ObjectId, ref: () => ClientEntity}) client: string;
   @Prop({type:String}) documentType: DocumentType;
-  @Prop() expiration: Date;
+  @Prop() expiration?: Date;
   @Prop() expires: boolean;
   @Prop() archived?: boolean;
   @Prop() description?: string;

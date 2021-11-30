@@ -3,30 +3,27 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { SchemaConstants } from 'src/shared/modules/data-access/mongoose/schema.constants';
 import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
 import { PopulatedDoc, Schema as MSchema } from 'mongoose';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+
+export enum SubstanceComplianceDocumentType{
+  DRUG_RANDOM_ENROLLMENT='DRUG_RANDOM_ENROLLMENT',
+  REASONABLE_SUSPICIOUS='REASONABLE_SUSPICIOUS',
+  CLEARINGHOUSE_LOG_IN='CLEARINGHOUSE_LOG_IN',
+  CLEARINGHOUSE_PASSWORD='CLEARINGHOUSE_PASSWORD',
+  CLEARING_REG_QUERIES='CLEARING_REG_QUERIES',
+  OTHER_SUBSTANCE_REQUEST='OTHER_SUBSTANCE_REQUEST',
+}
 
 
 @Schema({ ...SchemaConstants, collection: 'substance-compliance-clearinghouse' })
 export class SubstanceComplianceClearinghouseEntity extends PersistentEntity {
-  @Prop() drugRandomEnrollment?: string;
-  @Prop() drugRandomEnrollmentDetail?: string;
-  @Prop() drugRandomEnrollmentExpiration?: Date;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) drugRandomEnrollmentFile?: string;
-  @Prop() reasonableSuspicious?: string;
-  @Prop() reasonableSuspiciousDetail?: string;
-  @Prop() reasonableSuspiciousExpiration?: Date;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) reasonableSuspiciousFile?: string;
-  @Prop() clearingHouseLogin?: string;
-  @Prop() clearingHouseLoginDetail?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) clearingHouseLoginFile?: string;
-  @Prop() clearingHousePassword?: string;
-  @Prop() clearingHousePasswordDetail?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) clearingHousePasswordFile?: string;
-  @Prop() clearingHouseRegQueries?: string;
-  @Prop() clearingHouseRegQueriesDetail?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) clearingHouseRegQueriesFile?: string;
-  @Prop() otherSubstanceRequest?: string;
-  @Prop() otherSubstanceRequestDetail?: string;
-  @Prop({ type: MSchema.Types.ObjectId, ref: () => FilesEntity }) otherSubstanceRequestFile?: string;
+  @Prop({ type: MSchema.Types.ObjectId, ref: () => ClientEntity}) client: string;
+  @Prop({type:String}) documentType: SubstanceComplianceDocumentType;
+  @Prop() expiration?: Date;
+  @Prop() expires: boolean;
+  @Prop() archived?: boolean;
+  @Prop() description?: string;
+  @Prop() number?: string;
   @Prop() notes?: string;
 }
 

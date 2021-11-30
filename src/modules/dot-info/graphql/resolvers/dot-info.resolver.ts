@@ -32,11 +32,9 @@ import { APP_MODULES } from 'src/shared/resources/modules.enum';
 import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { DotInfoEntity } from '../../entities/dot-info.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
-
-
-import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
-import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
-import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+import { GetOneClientQuery } from 'src/modules/client/cqrs/queries/impl/get-one-client.query';
 
 
 @Resolver(() => DotInfoResponse)
@@ -136,5 +134,31 @@ export class DotInfoResolver extends BaseResolver {
       items: items.map(this._dotInfoMapper.persistent2Dto),
     };
   }
+
+  @ResolveField(() => [SolvedEntityResponse], { nullable: true })
+  async client(@Parent() parent?: DotInfoResponse): Promise<SolvedEntityResponse> {
+    if (parent?.client) {
+      const patientOrErr = await this._cqrsBus.execQuery<Result<ClientEntity>>(new GetOneClientQuery({where:{
+             id: {eq: parent.client.id}
+        }}));
+        if (patientOrErr.isFailure) {
+          return null;
+        }
+        const client = patientOrErr.unwrap();
+
+        return {
+          id: client.id,
+          entityName: ClientEntity.name,
+          identifier: client.companyName,
+          fields: [
+            {
+              field: 'contactOfficePhone',
+              value: client.contactOfficePhone
+            }
+          ]
+        }
+    }
+  }
+
 
 }

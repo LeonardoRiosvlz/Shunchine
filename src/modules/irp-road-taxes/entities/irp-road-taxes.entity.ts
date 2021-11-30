@@ -23,7 +23,7 @@ export enum IrpRoadTaxesType{
 export class IrpRoadTaxesEntity extends PersistentEntity {
   @Prop({ type: MSchema.Types.ObjectId, ref: () => ClientEntity}) client: string;
   @Prop({type:String}) documentType: IrpRoadTaxesType;
-  @Prop() expiration: Date;
+  @Prop() expiration?: Date;
   @Prop() expires: boolean;
   @Prop() archived?: boolean;
   @Prop() description?: string;

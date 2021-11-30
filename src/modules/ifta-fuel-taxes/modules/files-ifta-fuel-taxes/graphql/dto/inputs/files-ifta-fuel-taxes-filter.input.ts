@@ -7,7 +7,7 @@ import { FilesIftaFuelTaxesEntity } from '../../../entities/files-ifta-fuel-taxe
 export class FilesIftaFuelTaxesFilter implements IEntityFilter<FilesIftaFuelTaxesEntity>{
   @FilterableField(()=>String, { nullable: true }) id?: string;
   @FilterableField(()=>String, { nullable: true }) name?: string;
-  @FilterableField(()=>String, { nullable: true}) description?: string;
+  @FilterableField(()=>String, { nullable: true}) iftaFuelTaxes?: string;
 
   @FilterableField(()=>Date ,{ nullable: true }) createdAt?: Date;
   @FilterableField(()=>Date ,{ nullable: true }) updatedAt?: Date;
