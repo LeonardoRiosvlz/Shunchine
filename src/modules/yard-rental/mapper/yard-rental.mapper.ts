@@ -27,7 +27,7 @@ export class YardRentalMapper implements BaseMapper<YardRentalEntity> {
   persistent2Dto(persistentEntity: YardRentalEntity): YardRentalResponse {
     return {
       ...persistentEntity,
-      file: persistentEntity?.file ? { id: persistentEntity.file } : undefined,
+      client: persistentEntity?.client ? { id: persistentEntity.client } : undefined,
     };
   }
 

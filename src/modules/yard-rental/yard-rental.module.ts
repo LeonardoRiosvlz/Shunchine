@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { YardRentalEntityService } from './services/yard-rental-entity.service';
+import { FilesYardRentalModule } from './modules/files-yard-rental/files-yard-rental.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { YardRentalEntityService } from './services/yard-rental-entity.service';
     AppConfigModule,
     DataAccessModule,
     TenantModule,
+    FilesYardRentalModule,
     AppCqrsModule,
   ],
   providers: [

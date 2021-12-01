@@ -7,14 +7,16 @@ import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/s
 export class TrailerRentalResponse{
   @Field(() => ID) id: string;
   @Field(() => SolvedEntityResponse, { nullable: true }) client: SolvedEntityResponse;
-  @Field(() => String, )  unit: string;
-  @Field(() => String, )  vin: string;
-  @Field(() => String, )  tag: string;
-  @Field(() => String, )  year: string;
-  @Field(() => String, )  make: string;
-  @Field(() => String, )  model: string;
-  @Field(() => Date, )  rentalDate: Date;
-  @Field(() => Float, )  rentalAmount: number;
+  @Field(() => String,{nullable: true} )  unit?: string;
+  @Field(() => String,{nullable: true} )  vin?: string;
+  @Field(() => String,{nullable: true} )  tag?: string;
+  @Field(() => String,{nullable: true} )  year?: string;
+  @Field(() => String,{nullable: true} )  make?: string;
+  @Field(() => String,{nullable: true} )  model?: string;
+  @Field(() => Date,{nullable: true} )  rentalDate?: Date;
+  @Field(() => Float,{nullable: true} )  rentalAmount?: number;
+  @Field(() => Boolean, {nullable: true})  archived?: boolean;
+  @Field(() => String,{nullable: true} )  notes?: string;
   @Field({nullable: true}) createdAt?: Date;
   @Field({nullable: true}) updatedAt?: Date;
 }
