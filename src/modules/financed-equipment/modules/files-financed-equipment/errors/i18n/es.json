@@ -1,0 +1,5 @@
+{
+  "FilesFinancedEquipmentWithIdDoesNotExist": "FilesFinancedEquipment con id: '%id%' no existe",
+  "FilesFinancedEquipmentNameUsed": "FilesFinancedEquipment con nombre: '%name%' ya se encuentra registrada",
+  "FilesFinancedEquipmentFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

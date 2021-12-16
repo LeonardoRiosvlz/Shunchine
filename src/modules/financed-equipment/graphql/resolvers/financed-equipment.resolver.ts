@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver, Parent,ResolveField } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Parent, ResolveField } from '@nestjs/graphql';
 
 
 import { GraphQLVoid } from 'graphql-scalars';
@@ -32,11 +32,9 @@ import { APP_MODULES } from 'src/shared/resources/modules.enum';
 import { ACTION_LIST } from 'src/shared/resources/permits.type';
 import { FinancedEquipmentEntity } from '../../entities/financed-equipment.entity';
 import { IPaginatedData } from 'src/shared/core/interfaces/IPaginatedData';
-
-
-import { CloudFileResponse } from 'src/shared/modules/graphql/dto/responses/cloud-file.response'; 
-import { FilesEntity } from 'src/shared/modules/files/entities/files.entity';
-import { GetOneFilesQuery } from 'src/shared/modules/files/cqrs/queries/impl/get-one-files.query';
+import { SolvedEntityResponse } from 'src/shared/modules/graphql/dto/responses/solved-entity.response';
+import { ClientEntity } from 'src/modules/client/entities/client.entity';
+import { GetOneClientQuery } from 'src/modules/client/cqrs/queries/impl/get-one-client.query';
 
 
 @Resolver(() => FinancedEquipmentResponse)
@@ -137,73 +135,31 @@ export class FinancedEquipmentResolver extends BaseResolver {
     };
   }
 
+  @ResolveField(() => [SolvedEntityResponse], { nullable: true })
+  async client(@Parent() parent?: FinancedEquipmentResponse): Promise<SolvedEntityResponse> {
+    if (parent?.client) {
+      const patientOrErr = await this._cqrsBus.execQuery<Result<ClientEntity>>(new GetOneClientQuery({where:{
+             id: {eq: parent.client.id}
+        }}));
+        if (patientOrErr.isFailure) {
+          return null;
+        }
+        const client = patientOrErr.unwrap();
 
-  
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async financeAgreementDocuments(@Parent() parent?: FinancedEquipmentResponse): Promise<CloudFileResponse> {
-    if (parent?.financeAgreementDocuments) {
-      const financeAgreementDocumentsOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.financeAgreementDocuments.id },
-        },
-      }));
-      if (financeAgreementDocumentsOrErr.isFailure) {
-        return null;
-      }
-      const file = financeAgreementDocumentsOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
+        return {
+          id: client.id,
+          entityName: ClientEntity.name,
+          identifier: client.companyName,
+          fields: [
+            {
+              field: 'contactOfficePhone',
+              value: client.contactOfficePhone
+            }
+          ]
+        }
     }
   }
 
-
-
-  
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async repairsCostReceiptsFile(@Parent() parent?: FinancedEquipmentResponse): Promise<CloudFileResponse> {
-    if (parent?.repairsCostReceiptsFile) {
-      const repairsCostReceiptsFileOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.repairsCostReceiptsFile.id },
-        },
-      }));
-      if (repairsCostReceiptsFileOrErr.isFailure) {
-        return null;
-      }
-      const file = repairsCostReceiptsFileOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
-
-
-
-  
-  @ResolveField(() => CloudFileResponse, { nullable: true })
-  async payOffList(@Parent() parent?: FinancedEquipmentResponse): Promise<CloudFileResponse> {
-    if (parent?.payOffList) {
-      const payOffListOrErr = await this._cqrsBus.execQuery<Result<FilesEntity>>(new GetOneFilesQuery({
-        where: {
-          id: { eq: parent.payOffList.id },
-        },
-      }));
-      if (payOffListOrErr.isFailure) {
-        return null;
-      }
-      const file = payOffListOrErr.unwrap();
-      return {
-        id: file.id,
-        key: file.key,
-        url: file.url,
-      };
-    }
-  }
 
 
 

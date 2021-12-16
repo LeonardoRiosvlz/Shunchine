@@ -6,12 +6,13 @@ import { FinancedEquipmentEntity } from '../../../entities/financed-equipment.en
 @ObjectType()
 export class FinancedEquipmentFilter implements IEntityFilter<FinancedEquipmentEntity>{
   @FilterableField(()=>String, { nullable: true }) id?: string;
-  @FilterableField(()=>String, { nullable: true }) name?: string;
-  @FilterableField(()=>String, { nullable: true}) description?: string;
-
+  @FilterableField(()=>String, { nullable: true }) saleAmount?: string;
+  @FilterableField(()=>String, { nullable: true}) client?: string;
+  @FilterableField(()=>String, { nullable: true}) monthlyPayment?: string;
+  @FilterableField(()=>String, { nullable: true}) truckVin?: string;
   @FilterableField(()=>Date ,{ nullable: true }) createdAt?: Date;
   @FilterableField(()=>Date ,{ nullable: true }) updatedAt?: Date;
 
 }
 
-export const FinancedEquipmentFilterInput = FilterType(FinancedEquipmentFilter);
+export const FinancedEquipmentFilterInput = FilterType(FinancedEquipmentFilter); 

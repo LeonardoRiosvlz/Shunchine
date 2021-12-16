@@ -7,7 +7,7 @@ import { AccountingEntity } from '../../../entities/accounting.entity';
 export class AccountingFilter implements IEntityFilter<AccountingEntity>{
   @FilterableField(()=>String, { nullable: true }) id?: string;
   @FilterableField(()=>String, { nullable: true }) name?: string;
-  @FilterableField(()=>String, { nullable: true}) description?: string;
+  @FilterableField(()=>String, { nullable: true}) client?: string;
 
   @FilterableField(()=>Date ,{ nullable: true }) createdAt?: Date;
   @FilterableField(()=>Date ,{ nullable: true }) updatedAt?: Date;

@@ -1,0 +1,5 @@
+{
+  "FilesFinancedEquipmentWithIdDoesNotExist": "FilesFinancedEquipment with id: '%id%' does not exists",
+  "FilesFinancedEquipmentNameUsed": "FilesFinancedEquipment with name: '%name%' already exists",
+  "FilesFinancedEquipmentFieldUsed": "The value: %value% exists in the database, for the field: %field%"
+}

@@ -21,6 +21,8 @@ import { TrailerRentalModule } from './modules/trailer-rental/trailer-rental.mod
 import { YardRentalModule } from './modules/yard-rental/yard-rental.module';
 import { FinancedEquipmentModule } from './modules/financed-equipment/financed-equipment.module';
 import { AccountingModule } from './modules/accounting/accounting.module';
+import { ClearinghouseFormModule } from './modules/clearinghouse-form/clearinghouse-form.module';
+import { RoadTaxesFormModule } from './modules/road-taxes-form/road-taxes-form.module';
 
 @Module({
   imports: [
@@ -46,6 +48,9 @@ import { AccountingModule } from './modules/accounting/accounting.module';
     FinancedEquipmentModule,
     AccountingModule,
     FixturesModule,
+    FinancedEquipmentModule,
+    ClearinghouseFormModule,
+    RoadTaxesFormModule,
 
   ],
 

@@ -13,6 +13,7 @@ import { TenantModule } from 'src/shared/modules/tenant/tenant.module';
 import { TenantUtils } from 'src/shared/modules/tenant/utils/tenant.utils';
 import { AppCqrsModule } from 'src/shared/modules/app-cqrs/app-cqrs.module';
 import { FinancedEquipmentEntityService } from './services/financed-equipment-entity.service';
+import { FilesFinancedEquipmentModule } from './modules/files-financed-equipment/files-financed-equipment.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { FinancedEquipmentEntityService } from './services/financed-equipment-en
     DataAccessModule,
     TenantModule,
     AppCqrsModule,
+    FilesFinancedEquipmentModule,
   ],
   providers: [
     ...TenantUtils.buildTenantEntityProvider([FinancedEquipmentFeature]),

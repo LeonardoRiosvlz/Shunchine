@@ -1,0 +1,5 @@
+{
+  "RoadTaxesFormWithIdDoesNotExist": "RoadTaxesForm con id: '%id%' no existe",
+  "RoadTaxesFormNameUsed": "RoadTaxesForm con nombre: '%name%' ya se encuentra registrada",
+  "RoadTaxesFormFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

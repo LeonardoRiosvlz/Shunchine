@@ -1,0 +1,5 @@
+{
+  "ClearinghouseFormWithIdDoesNotExist": "ClearinghouseForm con id: '%id%' no existe",
+  "ClearinghouseFormNameUsed": "ClearinghouseForm con nombre: '%name%' ya se encuentra registrada",
+  "ClearinghouseFormFieldUsed": "Existe en la base de datos el valor: '%value%' para el campo %field%"
+}

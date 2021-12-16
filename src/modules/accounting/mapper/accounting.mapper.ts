@@ -28,6 +28,7 @@ export class AccountingMapper implements BaseMapper<AccountingEntity> {
     return {
       ...persistentEntity,
       file: persistentEntity?.file ? { id: persistentEntity.file } : undefined,
+      client: persistentEntity?.client ? { id: persistentEntity.client } : undefined,
     };
   }
 
